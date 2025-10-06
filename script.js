@@ -1141,6 +1141,88 @@ function showWinner() {
     }
 }
 
+// 우승팀 발표: 전체화면 오버레이 + 드럼롤 + 텍스트 애니메이션
+function showWinnerOverlay() {
+    const overlay = document.getElementById('winnerOverlay');
+    const textEl = document.getElementById('winnerText');
+    const audio = document.getElementById('drumrollAudio');
+    if (!overlay || !textEl || !audio) {
+        showAlert('오버레이 요소 또는 오디오를 찾을 수 없습니다.', 'warning');
+        return;
+    }
+
+    // 실제 우승팀 이름(들) 계산
+    if (!teams || teams.length === 0) {
+        showAlert('먼저 팀을 설정해주세요!', 'warning');
+        return;
+    }
+    const maxScore = Math.max(...teams.map(t => t.score));
+    const winners = teams.filter(t => t.score === maxScore);
+    const winnerLabel = winners.length > 1
+        ? winners.map(w => w.name).join(', ')
+        : winners[0].name;
+    textEl.textContent = winnerLabel;
+
+    // 초기 상태 리셋
+    overlay.style.display = 'flex';
+    overlay.classList.add('active');
+    document.body.classList.add('no-scroll');
+    textEl.classList.remove('reveal', 'shake', 'visible');
+    // 인라인 스타일 제거하여 CSS 클래스가 제대로 적용되도록
+    textEl.style.opacity = '';
+    textEl.style.transform = '';
+
+    // 오디오 시작점에서 재생 (일부 브라우저 정책으로 사용자 제스처 필요)
+    try {
+        audio.currentTime = 0;
+    } catch (e) {}
+    const playPromise = audio.play();
+    if (playPromise && typeof playPromise.then === 'function') {
+        playPromise.catch(() => {
+            // 자동재생 실패 시 사용자에게 한 번 더 클릭 유도
+            // overlay 클릭 시 재시도
+        });
+    }
+
+    // 약 5초 후 텍스트 등장
+    const revealDelay = 5000; // ms
+    const revealTimer = setTimeout(() => {
+        console.log('5초 후 텍스트 보이기 시작:', textEl.textContent);
+        textEl.classList.add('visible');
+    }, revealDelay);
+
+    // 닫기 핸들러 설정 (중복 등록 방지 위해 한 번만)
+    const close = () => {
+        clearTimeout(revealTimer);
+        audio.pause();
+        overlay.classList.remove('active');
+        overlay.style.display = 'none';
+        document.body.classList.remove('no-scroll');
+        textEl.classList.remove('reveal', 'shake', 'visible');
+        // 인라인 스타일도 완전 정리
+        textEl.style.opacity = '';
+        textEl.style.transform = '';
+        if (document.fullscreenElement) {
+            document.exitFullscreen().catch(() => {});
+        }
+        // 이벤트 제거
+        const btn = document.getElementById('winnerCloseBtn');
+        if (btn) btn.removeEventListener('click', close);
+        document.removeEventListener('keydown', onEsc);
+    };
+
+    const onEsc = (e) => { if (e.key === 'Escape') close(); };
+
+    const btn = document.getElementById('winnerCloseBtn');
+    if (btn) btn.addEventListener('click', close);
+    document.addEventListener('keydown', onEsc);
+
+    // 실제 브라우저 전체화면 진입 (사용자 제스처 기반이므로 성공 확률 높음)
+    if (overlay.requestFullscreen) {
+        overlay.requestFullscreen().catch(() => {});
+    }
+}
+
 // 타이머 기능
 function setTimer(seconds) {
     currentTime = seconds;
@@ -1359,10 +1441,24 @@ function setGameTimer(gameType) {
 
 // 사운드 기능
 function playSound(type) {
+    // 특정 효과음(mp3) 직접 재생 타입들
     if (type === 'end') {
-        // MP3 파일 재생
         const audio = new Audio('bedside-clock-alarm-95792.mp3');
         audio.volume = 0.7;
+        audio.play().catch(e => console.log('Audio play failed:', e));
+        return;
+    }
+    if (type === 'correct') {
+        // 정답 효과음: 고전 띵동 (정답.mp3
+        const audio = new Audio('고전 띵동 (정답.mp3');
+        audio.volume = 0.9;
+        audio.play().catch(e => console.log('Audio play failed:', e));
+        return;
+    }
+    if (type === 'wrong') {
+        // 오답 효과음: 063_삐삑 (오답 -짧은).mp3
+        const audio = new Audio('063_삐삑 (오답 -짧은).mp3');
+        audio.volume = 0.9;
         audio.play().catch(e => console.log('Audio play failed:', e));
         return;
     }
@@ -2154,7 +2250,7 @@ function loadQuestion() {
                     optionText.textContent = quiz.options[index];
                 }
             }
-            optionElement.classList.remove('selected', 'correct', 'wrong');
+            optionElement.classList.remove('selected', 'correct', 'wrong', 'disabled');
         }
     });
     
@@ -2175,15 +2271,38 @@ function loadQuestion() {
 
 function selectOption(letter) {
     if (isAnswerShown) return;
-    
-    // 이전 선택 제거
-    document.querySelectorAll('.option').forEach(opt => {
-        opt.classList.remove('selected');
-    });
-    
-    // 새 선택 추가
-    document.getElementById(`option${letter}`).classList.add('selected');
+
+    const currentGameQuestions = quizDataByGame[`game${currentGame}`];
+    const quiz = currentGameQuestions[currentQuizIndex];
+    const correctAnswer = quiz.correct;
+
+    // 비활성화된 보기 클릭 방지
+    const targetEl = document.getElementById(`option${letter}`);
+    if (targetEl && targetEl.classList.contains('disabled')) return;
+
+    // 클릭한 보기를 시각적으로 선택 상태로 표시
+    const clicked = document.getElementById(`option${letter}`);
+    if (clicked) {
+        clicked.classList.add('selected');
+    }
+
     selectedAnswer = letter;
+
+    if (letter === correctAnswer) {
+        // 정답: 즉시 해설 표시 및 정답 하이라이트, 효과음 재생
+        showAnswer();
+        // 모든 보기 비활성화
+        document.querySelectorAll('.option').forEach(opt => opt.classList.add('disabled'));
+        playSound('correct');
+    } else {
+        // 오답: 해당 보기 비활성화 + 오답 표시, 효과음 재생
+        if (clicked) {
+            clicked.classList.add('wrong', 'disabled');
+            clicked.classList.remove('selected');
+        }
+        playSound('wrong');
+        // 오답 시에는 해설을 열지 않고, 다른 보기를 계속 선택 가능
+    }
 }
 
 function showAnswer() {

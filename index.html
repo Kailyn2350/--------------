@@ -63,7 +63,7 @@
             </div>
             <div style="text-align: center; margin-top: 20px;">
                 <button class="nav-btn" onclick="resetAllScores()">전체 점수 초기화</button>
-                <button class="nav-btn" onclick="showWinner()">우승팀 발표</button>
+                <button class="nav-btn" onclick="showWinnerOverlay()">우승팀 발표</button>
             </div>
         </div>
 
@@ -445,6 +445,18 @@
     </div>
 
     <script src="script.js"></script>
+
+    <!-- 우승팀 발표 전체화면 오버레이 -->
+    <div id="winnerOverlay" class="winner-overlay" style="display: none;">
+        <div class="winner-overlay-inner">
+            <div class="winner-text" id="winnerText">우승팀</div>
+            <button class="winner-close" id="winnerCloseBtn" title="닫기(ESC)">×</button>
+        </div>
+        <!-- 드럼롤 효과음: 파일명에 공백이 포함되어 있어 정확히 동일하게 표기 -->
+        <audio id="drumrollAudio" preload="auto">
+            <source src="효과음    두구두구두구.mp3" type="audio/mpeg">
+        </audio>
+    </div>
 </body>
 
 </html>
