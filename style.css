@@ -1056,6 +1056,17 @@ body {
     flex-shrink: 0;
 }
 
+/* 일본어 보조 텍스트 (퀴즈에서 한-일 병기 표시용) */
+.jp {
+    display: block;
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.question-section .jp {
+    color: rgba(255,255,255,0.9);
+}
+
 .option-text {
     font-size: 1.2rem;
     line-height: 1.4;
