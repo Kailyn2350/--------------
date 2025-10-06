@@ -946,13 +946,42 @@ function getJPTranslationForQuiz(quiz) {
     return t;
 }
 
+// 퀴즈 예시 문제
+const sampleQuizData = {
+    question: "한국에서 가장 높은 산은 무엇일까요?",
+    options: ["지리산", "한라산", "백두산", "설악산"],
+    correct: "C",
+    explanation: "백두산은 해발 2,744m로 한국에서 가장 높은 산입니다."
+};
+
+// 예시 문제 일본어 번역
+const sampleQuizTranslationJP = {
+    q: "韓国で最も高い山はどれでしょうか？",
+    options: ["智異山（チリサン）", "漢拏山（ハルラサン）", "白頭山（ペクトゥサン）", "雪嶽山（ソラクサン）"],
+    exp: "白頭山は標高2,744mで韓国最高峰です。"
+};
+
 // 퀴즈쇼 관련 변수
 let currentGame = 1; // 현재 경기 번호
 let currentQuizIndex = 0;
 let selectedAnswer = null;
 let isAnswerShown = false;
 let gameTimer = null;
-let gameTimeLeft = 240; // 4분 = 240초
+let gameTimeLeft = 240; // 기본 4분 = 240초
+
+// 경기별 타이머 시간 설정
+function getGameTimeLimit(gameNumber) {
+    switch (gameNumber) {
+        case 1:
+        case 2:
+        case 3:
+            return 240; // 1~3경기: 4분
+        case 4:
+            return 300; // 4경기: 5분
+        default:
+            return 240; // 기본: 4분
+    }
+}
 
 // 문제 순서 랜덤 섞기 관련 상태
 let quizShuffled = false;
@@ -1226,14 +1255,18 @@ function showWinnerOverlay() {
 // 타이머 기능
 function setTimer(seconds) {
     currentTime = seconds;
+    console.log('타이머 설정됨:', seconds, '초');
     updateTimerDisplay();
 }
 
 function startTimer() {
+    console.log('타이머 시작 시도, 현재 실행 상태:', isRunning);
     if (!isRunning) {
         isRunning = true;
+        console.log('타이머 시작됨');
         timerInterval = setInterval(() => {
             currentTime--;
+            console.log('타이머 카운트다운:', currentTime);
             updateTimerDisplay();
 
             if (currentTime === 10) {
@@ -1286,8 +1319,14 @@ function subtractTime(seconds) {
 function updateTimerDisplay() {
     const minutes = Math.floor(currentTime / 60);
     const seconds = currentTime % 60;
-    document.getElementById('timerDisplay').textContent =
-        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    const displayText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    console.log('타이머 표시 업데이트:', displayText);
+    const timerEl = document.getElementById('timerDisplay');
+    if (timerEl) {
+        timerEl.textContent = displayText;
+    } else {
+        console.error('타이머 표시 요소를 찾을 수 없습니다');
+    }
 }
 
 // 게임 진행 상태 관리
@@ -2153,7 +2192,7 @@ function startQuizShow() {
     currentQuizIndex = 0;
     selectedAnswer = null;
     isAnswerShown = false;
-    gameTimeLeft = 240; // 4분 초기화
+    gameTimeLeft = getGameTimeLimit(currentGame); // 경기별 시간 설정
     
     const fullscreen = document.getElementById('quizShowFullscreen');
     console.log('전체화면 요소:', fullscreen);
@@ -2198,7 +2237,7 @@ function loadQuestion() {
             alert(`${currentGame}경기의 모든 문제가 완료되었습니다! 다음 경기로 넘어갑니다.`);
             currentGame++;
             currentQuizIndex = 0;
-            gameTimeLeft = 240; // 4분 초기화
+            gameTimeLeft = getGameTimeLimit(currentGame); // 경기별 시간 설정
             startGameTimer();
         } else {
             alert('🎉 모든 경기의 모든 문제가 완료되었습니다! 퀴즈가 종료됩니다.');
@@ -2272,6 +2311,40 @@ function loadQuestion() {
 function selectOption(letter) {
     if (isAnswerShown) return;
 
+    // 예시 모드 처리
+    if (currentGame === 0) {
+        const correctAnswer = sampleQuizData.correct;
+        
+        // 비활성화된 보기 클릭 방지
+        const targetEl = document.getElementById(`option${letter}`);
+        if (targetEl && targetEl.classList.contains('disabled')) return;
+
+        // 클릭한 보기를 시각적으로 선택 상태로 표시
+        const clicked = document.getElementById(`option${letter}`);
+        if (clicked) {
+            clicked.classList.add('selected');
+        }
+
+        selectedAnswer = letter;
+
+        if (letter === correctAnswer) {
+            // 정답: 즉시 해설 표시 및 정답 하이라이트, 효과음 재생
+            showSampleAnswer();
+            // 모든 보기 비활성화
+            document.querySelectorAll('.option').forEach(opt => opt.classList.add('disabled'));
+            playSound('correct');
+        } else {
+            // 오답: 해당 보기 비활성화 + 오답 표시, 효과음 재생
+            if (clicked) {
+                clicked.classList.add('wrong', 'disabled');
+                clicked.classList.remove('selected');
+            }
+            playSound('wrong');
+        }
+        return;
+    }
+
+    // 일반 게임 모드 처리
     const currentGameQuestions = quizDataByGame[`game${currentGame}`];
     const quiz = currentGameQuestions[currentQuizIndex];
     const correctAnswer = quiz.correct;
@@ -2305,9 +2378,46 @@ function selectOption(letter) {
     }
 }
 
+function showSampleAnswer() {
+    if (isAnswerShown) return;
+    
+    const correctAnswer = sampleQuizData.correct;
+    
+    // 정답 표시
+    const options = ['A', 'B', 'C', 'D'];
+    options.forEach(letter => {
+        const optionElement = document.getElementById(`option${letter}`);
+        if (letter === correctAnswer) {
+            optionElement.classList.add('correct');
+        } else if (letter === selectedAnswer && letter !== correctAnswer) {
+            optionElement.classList.add('wrong');
+        }
+    });
+    
+    // 정답 설명 표시 (한-일 병기)
+    const answerSection = document.getElementById('answerSection');
+    const correctAnswerText = sampleQuizData.options[correctAnswer.charCodeAt(0) - 65];
+    const correctAnswerTextJP = sampleQuizTranslationJP.options[correctAnswer.charCodeAt(0) - 65];
+    document.getElementById('correctAnswerText').innerHTML = `${correctAnswer} - ${correctAnswerText}<br><span class="jp">${correctAnswerTextJP}</span>`;
+    document.getElementById('explanationText').innerHTML = `${sampleQuizData.explanation}<br><span class="jp">${sampleQuizTranslationJP.exp}</span>`;
+    
+    answerSection.style.display = 'block';
+    document.getElementById('showAnswerBtn').style.display = 'none';
+    document.getElementById('nextQuestionBtn').style.display = 'none'; // 예시에서는 다음 문제 없음
+    
+    isAnswerShown = true;
+}
+
 function showAnswer() {
     if (isAnswerShown) return;
     
+    // 예시 모드 처리
+    if (currentGame === 0) {
+        showSampleAnswer();
+        return;
+    }
+    
+    // 일반 게임 모드 처리
     const currentGameQuestions = quizDataByGame[`game${currentGame}`];
     const quiz = currentGameQuestions[currentQuizIndex];
     const correctAnswer = quiz.correct;
@@ -2368,7 +2478,7 @@ function startGameTimer() {
     
     gameTimer = setInterval(() => {
         gameTimeLeft--;
-        updateTimerDisplay();
+        updateQuizTimerDisplay();
         
         if (gameTimeLeft <= 0) {
             clearInterval(gameTimer);
@@ -2379,8 +2489,8 @@ function startGameTimer() {
     }, 1000);
 }
 
-// 타이머 표시 업데이트
-function updateTimerDisplay() {
+// 타이머 표시 업데이트 (퀴즈용)
+function updateQuizTimerDisplay() {
     const minutes = Math.floor(gameTimeLeft / 60);
     const seconds = gameTimeLeft % 60;
     const timerText = `${minutes}:${seconds.toString().padStart(2, '0')}`;
@@ -2402,7 +2512,7 @@ function nextGame() {
     if (currentGame < 4) {
         currentGame++;
         currentQuizIndex = 0;
-        gameTimeLeft = 240; // 4분 초기화
+        gameTimeLeft = getGameTimeLimit(currentGame); // 경기별 시간 설정
         startGameTimer();
         loadQuestion();
         alert(`${currentGame}경기를 시작합니다!`);
@@ -2417,7 +2527,7 @@ function prevGame() {
     if (currentGame > 1) {
         currentGame--;
         currentQuizIndex = 0;
-        gameTimeLeft = 240; // 4분 초기화
+        gameTimeLeft = getGameTimeLimit(currentGame); // 경기별 시간 설정
         startGameTimer();
         loadQuestion();
         alert(`${currentGame}경기로 돌아갑니다!`);
@@ -2429,7 +2539,7 @@ function goToGame(gameNumber) {
     if (gameNumber >= 1 && gameNumber <= 4) {
         currentGame = gameNumber;
         currentQuizIndex = 0;
-        gameTimeLeft = 240; // 4분 초기화
+        gameTimeLeft = getGameTimeLimit(currentGame); // 경기별 시간 설정
         startGameTimer();
         loadQuestion();
         alert(`${currentGame}경기로 이동합니다!`);
@@ -2473,6 +2583,80 @@ function setGameTimer(gameType) {
     setTimer(totalSeconds);
 }
 
+// 예시 퀴즈 보기 함수
+function showSampleQuiz() {
+    const fullscreen = document.getElementById('quizShowFullscreen');
+    
+    if (fullscreen) {
+        // 예시 모드 설정
+        currentGame = 0; // 예시용 특별 번호
+        currentQuizIndex = 0;
+        selectedAnswer = null;
+        isAnswerShown = false;
+        
+        fullscreen.style.display = 'block';
+        fullscreen.classList.add('active');
+        
+        loadSampleQuestion();
+        
+        // 예시에서는 타이머 없음
+        if (gameTimer) {
+            clearInterval(gameTimer);
+            gameTimer = null;
+        }
+        
+        alert('예시 퀴즈 모드입니다. 실제 게임이 아닙니다.');
+    }
+}
+
+function loadSampleQuestion() {
+    // 퀴즈 제목 업데이트
+    const quizTitle = document.getElementById('quizTitle');
+    if (quizTitle) {
+        quizTitle.textContent = '퀴즈 예시 문제';
+    }
+    
+    // 진행도 업데이트
+    const currentQuestionEl = document.getElementById('currentQuestion');
+    const totalQuestionsEl = document.getElementById('totalQuestions');
+    
+    if (currentQuestionEl && totalQuestionsEl) {
+        currentQuestionEl.textContent = '예시';
+        totalQuestionsEl.textContent = '문제';
+    }
+    
+    // 문제 표시 (한-일 병기)
+    const questionTextEl = document.getElementById('questionText');
+    if (questionTextEl) {
+        questionTextEl.innerHTML = `${sampleQuizData.question}<br><span class="jp">${sampleQuizTranslationJP.q}</span>`;
+    }
+    
+    // 선택지 표시 (한-일 병기)
+    const options = ['A', 'B', 'C', 'D'];
+    options.forEach((letter, index) => {
+        const optionElement = document.getElementById(`option${letter}`);
+        if (optionElement && sampleQuizData.options[index]) {
+            const optionText = optionElement.querySelector('.option-text');
+            if (optionText) {
+                optionText.innerHTML = `${sampleQuizData.options[index]}<br><span class="jp">${sampleQuizTranslationJP.options[index]}</span>`;
+            }
+            optionElement.classList.remove('selected', 'correct', 'wrong', 'disabled');
+        }
+    });
+    
+    // 답안 섹션 숨기기
+    const answerSection = document.getElementById('answerSection');
+    const showAnswerBtn = document.getElementById('showAnswerBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    
+    if (answerSection) answerSection.style.display = 'none';
+    if (showAnswerBtn) showAnswerBtn.style.display = 'inline-block';
+    if (nextQuestionBtn) nextQuestionBtn.style.display = 'none';
+    
+    selectedAnswer = null;
+    isAnswerShown = false;
+}
+
 // 특정 경기로 퀴즈쇼 시작
 function startSpecificGame(gameNumber) {
     console.log(`${gameNumber}경기 퀴즈쇼 시작`);
@@ -2481,7 +2665,7 @@ function startSpecificGame(gameNumber) {
     currentQuizIndex = 0;
     selectedAnswer = null;
     isAnswerShown = false;
-    gameTimeLeft = 240; // 4분 초기화
+    gameTimeLeft = getGameTimeLimit(gameNumber); // 경기별 시간 설정
     
     const fullscreen = document.getElementById('quizShowFullscreen');
     
