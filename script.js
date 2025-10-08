@@ -80,7 +80,7 @@ let originalWordData = {
         { korean: '글러브', japanese: 'グローブ' },
         { korean: '스키', japanese: 'スキー' },
         { korean: '스케이트', japanese: 'スケート' },
-        { korean: '수영', japanese: '水着（みずぎ）' },
+        { korean: '수영', japanese: '水泳' },
         { korean: '헬멧', japanese: 'ヘルメット' },
         { korean: '아령', japanese: 'ダンベル' },
         { korean: '줄넘기', japanese: '縄跳び（なわとび）' },
