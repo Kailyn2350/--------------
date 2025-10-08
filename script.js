@@ -85,7 +85,7 @@ let originalWordData = {
         { korean: '아령', japanese: 'ダンベル' },
         { korean: '줄넘기', japanese: '縄跳び（なわとび）' },
         { korean: '자전거', japanese: '自転車（じてんしゃ）' },
-        { korean: '골대', japanese: 'ゴール' },
+        { korean: '골대', japanese: 'ゴール台' },
         { korean: '트램펄린', japanese: 'トランポリン' }
     ],
     game4: [
