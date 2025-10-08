@@ -1252,3 +1252,457 @@ body {
         max-width: 300px;
     }
 }
+
+/* ===========================================
+   제시어 게임 스타일
+   =========================================== */
+
+/* 제시어 게임 컨트롤 */
+.word-game-controls {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.word-game-controls h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/* 제시어 셔플 컨트롤 */
+.word-shuffle-controls {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #667eea;
+}
+
+.word-shuffle-controls h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.shuffle-description {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.shuffle-description p {
+    margin: 5px 0;
+    color: #333;
+}
+
+#shuffleStatus {
+    font-weight: bold;
+    color: #667eea;
+}
+
+.shuffle-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.shuffle-btn, .reset-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    min-width: 140px;
+}
+
+.shuffle-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.shuffle-btn:hover {
+    background: linear-gradient(135deg, #5a6fd8, #6a4190);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.reset-btn {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.reset-btn:hover {
+    background: rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.2);
+}
+
+/* 제시어 게임 전체화면 */
+.word-game-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.word-game-container {
+    width: 90%;
+    max-width: 900px;
+    height: 90%;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 제시어 게임 헤더 */
+.word-game-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.word-game-header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.word-game-progress {
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+.word-game-timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 25px;
+    min-width: 100px;
+    text-align: center;
+}
+
+.close-word-game {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-word-game:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* 제시어 게임 콘텐츠 */
+.word-game-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+    text-align: center;
+}
+
+/* 제시어 표시 영역 */
+.word-display-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.korean-word {
+    font-size: 6rem;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: slideInUp 0.5s ease-out;
+}
+
+.japanese-word {
+    font-size: 3rem;
+    color: #764ba2;
+    font-weight: 600;
+    margin-bottom: 30px;
+    opacity: 0.8;
+    animation: slideInUp 0.5s ease-out 0.1s forwards;
+    opacity: 0;
+}
+
+/* 점수 표시 */
+.word-game-score {
+    margin: 20px 0;
+}
+
+.score-display {
+    font-size: 1.5rem;
+    color: #333;
+    background: rgba(102, 126, 234, 0.1);
+    padding: 15px 30px;
+    border-radius: 25px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+/* 제시어 게임 컨트롤 버튼 */
+.word-game-controls {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.word-game-btn {
+    padding: 20px 40px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    min-width: 150px;
+}
+
+.correct-btn {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+}
+
+.correct-btn:hover {
+    background: linear-gradient(135deg, #45a049, #3d8b40);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+}
+
+.skip-btn {
+    background: linear-gradient(135deg, #ff9800, #e68900);
+    color: white;
+}
+
+.skip-btn:hover {
+    background: linear-gradient(135deg, #e68900, #cc7a00);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
+}
+
+/* 제시어 게임 네비게이션 */
+.word-game-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.word-nav-btn {
+    padding: 10px 20px;
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 20px;
+    color: #667eea;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.word-nav-btn:hover {
+    background: rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+/* 제시어 게임 결과 화면 */
+.word-game-result {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.result-container {
+    background: white;
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+}
+
+.result-container h2 {
+    color: #667eea;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.final-score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+.score-text {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.score-number {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #667eea;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.result-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.result-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.result-btn:first-child {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.result-btn:last-child {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.result-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 애니메이션 */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* 반응형 디자인 - 제시어 게임 */
+@media (max-width: 768px) {
+    .korean-word {
+        font-size: 4rem;
+    }
+    
+    .japanese-word {
+        font-size: 2rem;
+    }
+    
+    .word-game-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .word-game-btn {
+        width: 100%;
+        max-width: 300px;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+    }
+    
+    .word-game-navigation {
+        justify-content: center;
+    }
+    
+    .word-nav-btn {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+    
+    .word-game-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .word-game-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .word-game-progress,
+    .word-game-timer {
+        font-size: 1rem;
+    }
+}

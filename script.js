@@ -20,27 +20,230 @@ const backgroundImages = [
 ];
 let currentBackgroundIndex = 0;
 
-// 제시어 및 그림 데이터
-let wordData = {
-    bodyLanguage: {
-        title: '몸으로 말해요',
-        words: ['축구', '농구', '야구', '수영', '달리기', '점프', '춤추기', '노래하기',
-            '요리하기', '청소하기', '세수하기', '양치질', '운전하기', '자전거타기',
-            '피아노치기', '책읽기', '텔레비전보기', '전화하기', '사진찍기', '그림그리기']
-    },
-    drawing: {
-        title: '그림 그리기',
-        images: [
-            { name: '집', url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cG9seWdvbiBwb2ludHM9IjEwMCwyMCAzMCwxMDAgMzAsMTgwIDE3MCwxODAgMTcwLDEwMCIgZmlsbD0iIzMzNyIvPgogIDxyZWN0IHg9IjQwIiB5PSIxMjAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI2MCIgZmlsbD0iIzY2NCIvPgogIDxyZWN0IHg9IjEyMCIgeT0iMTIwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9IiM0NEMiLz4KPC9zdmc+' },
-            { name: '강아지', url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjQwIiBmaWxsPSIjRkY4Ii8+CiAgPGNpcmNsZSBjeD0iNzAiIGN5PSIzMCIgcj0iMTUiIGZpbGw9IiNGRjgiLz4KICA8Y2lyY2xlIGN4PSIxMzAiIGN5PSIzMCIgcj0iMTUiIGZpbGw9IiNGRjgiLz4KICA8Y2lyY2xlIGN4PSI4NSIgY3k9Ijg1IiByPSIzIiBmaWxsPSIjMDAwIi8+CiAgPGNpcmNsZSBjeD0iMTE1IiBjeT0iODUiIHI9IjMiIGZpbGw9IiMwMDAiLz4KICA8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iMTA1IiByeD0iMTUiIHJ5PSIxMCIgZmlsbD0iIzAwMCIvPgo8L3N2Zz4=' },
-            { name: '꽃', url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MCIgcj0iMjAiIGZpbGw9IiNGRkMiLz4KICA8Y2lyY2xlIGN4PSI3MCIgY3k9IjkwIiByPSIyMCIgZmlsbD0iI0ZGQyIvPgogIDxjaXJjbGUgY3g9IjEzMCIgY3k9IjkwIiByPSIyMCIgZmlsbD0iI0ZGQyIvPgogIDxjaXJjbGUgY3g9IjkwIiBjeT0iMTEwIiByPSIyMCIgZmlsbD0iI0ZGQyIvPgogIDxjaXJjbGUgY3g9IjExMCIgY3k9IjExMCIgcj0iMjAiIGZpbGw9IiNGRkMiLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI5MCIgcj0iMTAiIGZpbGw9IiNGRkEiLz4KICA8cmVjdCB4PSI5NSIgeT0iMTMwIiB3aWR0aD0iMTAiIGhlaWdodD0iNTAiIGZpbGw9IiMzQzMiLz4KPC9zdmc+' },
-            { name: '나무', url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSI5MCIgeT0iMTQwIiB3aWR0aD0iMjAiIGhlaWdodD0iNDAiIGZpbGw9IiM2NjQiLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjUwIiBmaWxsPSIjNEM0Ii8+Cjwvc3ZnPg==' },
-            { name: '자동차', url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSI0MCIgeT0iMTAwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjRkYwMDAiLz4KICA8Y2lyY2xlIGN4PSI3MCIgY3k9IjE0NSIgcj0iMTUiIGZpbGw9IiMzMzMiLz4KICA8Y2lyY2xlIGN4PSIxMzAiIGN5PSIxNDUiIHI9IjE1IiBmaWxsPSIjMzMzIi8+CiAgPHJlY3QgeD0iNjAiIHk9Ijg1IiB3aWR0aD0iMzAiIGhlaWdodD0iMjAiIGZpbGw9IiM0NEMiLz4KICA8cmVjdCB4PSIxMDAiIHk9Ijg1IiB3aWR0aD0iNDAiIGhlaWdodD0iMjAiIGZpbGw9IiM0NEMiLz4KPC9zdmc+' },
-            { name: '태양', url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjQwIiBmaWxsPSIjRkZEQTAwIi8+CiAgPGxpbmUgeDE9IjEwMCIgeTE9IjMwIiB4Mj0iMTAwIiB5Mj0iNTAiIHN0cm9rZT0iI0ZGREEwMCIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgPGxpbmUgeDE9IjE3MCIgeTE9IjEwMCIgeDI9IjE1MCIgeTI9IjEwMCIgc3Ryb2tlPSIjRkZEQTAwIiBzdHJva2Utd2lkdGg9IjQiLz4KICA8bGluZSB4MT0iMTAwIiB5MT0iMTcwIiB4Mj0iMTAwIiB5Mj0iMTUwIiBzdHJva2U9IiNGRkRBMDAiIHN0cm9rZS13aWR0aD0iNCIvPgogIDxsaW5lIHgxPSIzMCIgeTE9IjEwMCIgeDI9IjUwIiB5Mj0iMTAwIiBzdHJva2U9IiNGRkRBMDAiIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4=' }
-        ]
-    },
-    customWords: []
+// 제시어 게임 데이터 - 6게임으로 구성, 각 게임당 20개 제시어 (몸으로 표현하기 적합한 명사 중심)
+let originalWordData = {
+    game1: [
+        { korean: '코끼리', japanese: '象（ぞう）' },
+        { korean: '토끼', japanese: '兎（うさぎ）' },
+        { korean: '사자', japanese: 'ライオン' },
+        { korean: '원숭이', japanese: '猿（さる）' },
+        { korean: '거북이', japanese: '亀（かめ）' },
+        { korean: '강아지', japanese: '犬（いぬ）' },
+        { korean: '고양이', japanese: '猫（ねこ）' },
+        { korean: '새', japanese: '鳥（とり）' },
+        { korean: '물고기', japanese: '魚（さかな）' },
+        { korean: '뱀', japanese: '蛇（へび）' },
+        { korean: '개구리', japanese: '蛙（かえる）' },
+        { korean: '나비', japanese: '蝶（ちょう）' },
+        { korean: '거미', japanese: '蜘蛛（くも）' },
+        { korean: '펭귄', japanese: 'ペンギン' },
+        { korean: '기린', japanese: 'キリン' },
+        { korean: '호랑이', japanese: '虎（とら）' },
+        { korean: '돼지', japanese: '豚（ぶた）' },
+        { korean: '닭', japanese: '鶏（にわとり）' },
+        { korean: '소', japanese: '牛（うし）' },
+        { korean: '말', japanese: '馬（うま）' }
+    ],
+    game2: [
+        { korean: '자동차', japanese: '車（くるま）' },
+        { korean: '비행기', japanese: '飛行機（ひこうき）' },
+        { korean: '기차', japanese: '電車（でんしゃ）' },
+        { korean: '배', japanese: '船（ふね）' },
+        { korean: '자전거', japanese: '自転車（じてんしゃ）' },
+        { korean: '헬리콥터', japanese: 'ヘリコプター' },
+        { korean: '버스', japanese: 'バス' },
+        { korean: '트럭', japanese: 'トラック' },
+        { korean: '오토바이', japanese: 'オートバイ' },
+        { korean: '택시', japanese: 'タクシー' },
+        { korean: '지하철', japanese: '地下鉄（ちかてつ）' },
+        { korean: '로켓', japanese: 'ロケット' },
+        { korean: '잠수함', japanese: '潜水艦（せんすいかん）' },
+        { korean: '스쿠터', japanese: 'スクーター' },
+        { korean: '구급차', japanese: '救急車（きゅうきゅうしゃ）' },
+        { korean: '소방차', japanese: '消防車（しょうぼうしゃ）' },
+        { korean: '경찰차', japanese: 'パトカー' },
+        { korean: '스케이트보드', japanese: 'スケートボード' },
+        { korean: '인력거', japanese: '人力車（じんりきしゃ）' },
+        { korean: '세그웨이', japanese: 'セグウェイ' }
+    ],
+    game3: [
+        { korean: '축구', japanese: 'サッカー' },
+        { korean: '농구', japanese: 'バスケットボール' },
+        { korean: '야구', japanese: '野球' },
+        { korean: '탁구', japanese: '卓球' },
+        { korean: '테니스', japanese: 'テニス' },
+        { korean: '배구', japanese: 'バレーボール' },
+        { korean: '골프', japanese: 'ゴルフ' },
+        { korean: '볼링', japanese: 'ボウリング' },
+        { korean: '라켓', japanese: 'ラケット' },
+        { korean: '배트', japanese: 'バット' },
+        { korean: '글러브', japanese: 'グローブ' },
+        { korean: '스키', japanese: 'スキー' },
+        { korean: '스케이트', japanese: 'スケート' },
+        { korean: '수영', japanese: '水着（みずぎ）' },
+        { korean: '헬멧', japanese: 'ヘルメット' },
+        { korean: '아령', japanese: 'ダンベル' },
+        { korean: '줄넘기', japanese: '縄跳び（なわとび）' },
+        { korean: '자전거', japanese: '自転車（じてんしゃ）' },
+        { korean: '골대', japanese: 'ゴール' },
+        { korean: '트램펄린', japanese: 'トランポリン' }
+    ],
+    game4: [
+        { korean: '피아노', japanese: 'ピアノ' },
+        { korean: '기타', japanese: 'ギター' },
+        { korean: '드럼', japanese: 'ドラム' },
+        { korean: '바이올린', japanese: 'バイオリン' },
+        { korean: '트럼펫', japanese: 'トランペット' },
+        { korean: '플루트', japanese: 'フルート' },
+        { korean: '마이크', japanese: 'マイク' },
+        { korean: '스피커', japanese: 'スピーカー' },
+        { korean: '헤드폰', japanese: 'ヘッドフォン' },
+        { korean: '카메라', japanese: 'カメラ' },
+        { korean: '텔레비전', japanese: 'テレビ' },
+        { korean: '라디오', japanese: 'ラジオ' },
+        { korean: '컴퓨터', japanese: 'コンピューター' },
+        { korean: '스마트폰', japanese: 'スマートフォン' },
+        { korean: '게임기', japanese: 'ゲーム機（き）' },
+        { korean: '리모컨', japanese: 'リモコン' },
+        { korean: '키보드', japanese: 'キーボード' },
+        { korean: '마우스', japanese: 'マウス' },
+        { korean: '프린터', japanese: 'プリンター' },
+        { korean: '스캐너', japanese: 'スキャナー' }
+    ],
+    game5: [
+        { korean: '햄버거', japanese: 'ハンバーガー' },
+        { korean: '피자', japanese: 'ピザ' },
+        { korean: '라면', japanese: 'ラーメン' },
+        { korean: '김밥', japanese: '海苔巻き（のりまき）' },
+        { korean: '도넛', japanese: 'ドーナツ' },
+        { korean: '케이크', japanese: 'ケーキ' },
+        { korean: '아이스크림', japanese: 'アイスクリーム' },
+        { korean: '팝콘', japanese: 'ポップコーン' },
+        { korean: '사탕', japanese: '飴（あめ）' },
+        { korean: '초콜릿', japanese: 'チョコレート' },
+        { korean: '바나나', japanese: 'バナナ' },
+        { korean: '사과', japanese: '林檎（りんご）' },
+        { korean: '수박', japanese: '西瓜（すいか）' },
+        { korean: '오렌지', japanese: 'オレンジ' },
+        { korean: '딸기', japanese: '苺（いちご）' },
+        { korean: '포도', japanese: '葡萄（ぶどう）' },
+        { korean: '당근', japanese: '人参（にんじん）' },
+        { korean: '양파', japanese: '玉葱（たまねぎ）' },
+        { korean: '토마토', japanese: 'トマト' },
+        { korean: '옥수수', japanese: 'とうもろこし' }
+    ],
+    game6: [
+        { korean: '의자', japanese: '椅子（いす）' },
+        { korean: '책상', japanese: '机（つくえ）' },
+        { korean: '침대', japanese: 'ベッド' },
+        { korean: '소파', japanese: 'ソファー' },
+        { korean: '냉장고', japanese: '冷蔵庫（れいぞうこ）' },
+        { korean: '세탁기', japanese: '洗濯機（せんたくき）' },
+        { korean: '전자레인지', japanese: '電子レンジ（でんしレンジ）' },
+        { korean: '에어컨', japanese: 'エアコン' },
+        { korean: '선풍기', japanese: '扇風機（せんぷうき）' },
+        { korean: '청소기', japanese: '掃除機（そうじき）' },
+        { korean: '거울', japanese: '鏡（かがみ）' },
+        { korean: '시계', japanese: '時計（とけい）' },
+        { korean: '전화기', japanese: '電話機（でんわき）' },
+        { korean: '우산', japanese: '傘（かさ）' },
+        { korean: '가방', japanese: '鞄（かばん）' },
+        { korean: '신발', japanese: '靴（くつ）' },
+        { korean: '모자', japanese: '帽子（ぼうし）' },
+        { korean: '안경', japanese: '眼鏡（めがね）' },
+        { korean: '칫솔', japanese: '歯ブラシ（はブラシ）' },
+        { korean: '수건', japanese: 'タオル' }
+    ]
 };
+
+// 현재 사용 중인 제시어 데이터 (셔플 후 분배된 데이터)
+let wordGameData = JSON.parse(JSON.stringify(originalWordData)); // 깊은 복사로 초기화
+
+// 모든 제시어를 하나의 배열로 합치는 함수
+function getAllWords() {
+    const allWords = [];
+    Object.values(originalWordData).forEach(gameWords => {
+        allWords.push(...gameWords);
+    });
+    return allWords;
+}
+
+// 제시어 전체 셔플 및 재분배 함수
+function shuffleAllWords() {
+    // 모든 제시어 가져오기
+    const allWords = getAllWords();
+    
+    // 전체 제시어 섞기
+    const shuffledAllWords = shuffleArray(allWords);
+    
+    // 6게임에 20개씩 분배
+    const newWordGameData = {};
+    for (let i = 1; i <= 6; i++) {
+        const startIndex = (i - 1) * 20;
+        const endIndex = startIndex + 20;
+        newWordGameData[`game${i}`] = shuffledAllWords.slice(startIndex, endIndex);
+    }
+    
+    // 새로운 데이터로 업데이트
+    wordGameData = newWordGameData;
+    
+    // 상태 업데이트
+    updateShuffleStatus('셔플됨 - 모든 제시어가 랜덤 분배');
+    
+    alert('🎲 모든 제시어가 셔플되어 새롭게 분배되었습니다!\n이제 각 경기마다 다양한 제시어가 나옵니다.');
+}
+
+// 원래 데이터로 복원하는 함수
+function resetToOriginalWords() {
+    wordGameData = JSON.parse(JSON.stringify(originalWordData)); // 깊은 복사
+    
+    // 상태 업데이트
+    updateShuffleStatus('기본 카테고리별 구성');
+    
+    alert('🔄 제시어가 원래 카테고리별로 복원되었습니다.');
+}
+
+// 셔플 상태 업데이트 함수
+function updateShuffleStatus(status) {
+    const statusElement = document.getElementById('shuffleStatus');
+    if (statusElement) {
+        statusElement.textContent = status;
+    }
+}
+
+// 기존 그림 데이터 유지
+let drawingData = {
+    title: '그림 그리기',
+    images: [
+        { name: '집', url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cG9seWdvbiBwb2ludHM9IjEwMCwyMCAzMCwxMDAgMzAsMTgwIDE3MCwxODAgMTcwLDEwMCIgZmlsbD0iIzMzNyIvPgogIDxyZWN0IHg9IjQwIiB5PSIxMjAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI2MCIgZmlsbD0iIzY2NCIvPgogIDxyZWN0IHg9IjEyMCIgeT0iMTIwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9IiM0NEMiLz4KPC9zdmc+' },
+        { name: '강아지', url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjQwIiBmaWxsPSIjRkY4Ii8+CiAgPGNpcmNsZSBjeD0iNzAiIGN5PSIzMCIgcj0iMTUiIGZpbGw9IiNGRjgiLz4KICA8Y2lyY2xlIGN4PSIxMzAiIGN5PSIzMCIgcj0iMTUiIGZpbGw9IiNGRjgiLz4KICA8Y2lyY2xlIGN4PSI4NSIgY3k9Ijg1IiByPSIzIiBmaWxsPSIjMDAwIi8+CiAgPGNpcmNsZSBjeD0iMTE1IiBjeT0iODUiIHI9IjMiIGZpbGw9IiMwMDAiLz4KICA8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iMTA1IiByeD0iMTUiIHJ5PSIxMCIgZmlsbD0iIzAwMCIvPgo8L3N2Zz4=' },
+        { name: '꽃', url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MCIgcj0iMjAiIGZpbGw9IiNGRkMiLz4KICA8Y2lyY2xlIGN4PSI3MCIgY3k9IjkwIiByPSIyMCIgZmlsbD0iI0ZGQyIvPgogIDxjaXJjbGUgY3g9IjEzMCIgY3k9IjkwIiByPSIyMCIgZmlsbD0iI0ZGQyIvPgogIDxjaXJjbGUgY3g9IjkwIiBjeT0iMTEwIiByPSIyMCIgZmlsbD0iI0ZGQyIvPgogIDxjaXJjbGUgY3g9IjExMCIgY3k9IjExMCIgcj0iMjAiIGZpbGw9IiNGRkMiLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI5MCIgcj0iMTAiIGZpbGw9IiNGRkEiLz4KICA8cmVjdCB4PSI5NSIgeT0iMTMwIiB3aWR0aD0iMTAiIGhlaWdodD0iNTAiIGZpbGw9IiMzQzMiLz4KPC9zdmc+' },
+        { name: '나무', url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSI5MCIgeT0iMTQwIiB3aWR0aD0iMjAiIGhlaWdodD0iNDAiIGZpbGw9IiM2NjQiLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjUwIiBmaWxsPSIjNEM0Ii8+Cjwvc3ZnPg==' },
+        { name: '자동차', url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSI0MCIgeT0iMTAwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjRkYwMDAiLz4KICA8Y2lyY2xlIGN4PSI3MCIgY3k9IjE0NSIgcj0iMTUiIGZpbGw9IiMzMzMiLz4KICA8Y2lyY2xlIGN4PSIxMzAiIGN5PSIxNDUiIHI9IjE1IiBmaWxsPSIjMzMzIi8+CiAgPHJlY3QgeD0iNjAiIHk9Ijg1IiB3aWR0aD0iMzAiIGhlaWdodD0iMjAiIGZpbGw9IiM0NEMiLz4KICA8cmVjdCB4PSIxMDAiIHk9Ijg1IiB3aWR0aD0iNDAiIGhlaWdodD0iMjAiIGZpbGw9IiM0NEMiLz4KPC9zdmc+' },
+        { name: '태양', url: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjQwIiBmaWxsPSIjRkZEQTAwIi8+CiAgPGxpbmUgeDE9IjEwMCIgeTE9IjMwIiB4Mj0iMTAwIiB5Mj0iNTAiIHN0cm9rZT0iI0ZGREEwMCIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgPGxpbmUgeDE9IjE3MCIgeTE9IjEwMCIgeDI9IjE1MCIgeTI9IjEwMCIgc3Ryb2tlPSIjRkZEQTAwIiBzdHJva2Utd2lkdGg9IjQiLz4KICA8bGluZSB4MT0iMTAwIiB5MT0iMTcwIiB4Mj0iMTAwIiB5Mj0iMTUwIiBzdHJva2U9IiNGRkRBMDAiIHN0cm9rZS13aWR0aD0iNCIvPgogIDxsaW5lIHgxPSIzMCIgeTE9IjEwMCIgeDI9IjUwIiB5Mj0iMTAwIiBzdHJva2U9IiNGRkRBMDAiIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4=' }
+    ]
+};
+
+// 제시어 게임 상태 관리
+let wordGameState = {
+    currentGame: 1,
+    currentWordIndex: 0,
+    correctCount: 0,
+    timeLeft: 120, // 2분
+    isPlaying: false,
+    timerInterval: null,
+    shuffledWords: [] // 섞인 제시어 배열
+};
+
+// 배열 섞기 함수 (Fisher-Yates 알고리즘)
+function shuffleArray(array) {
+    const shuffled = [...array]; // 원본 배열 복사
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
 
 let currentDisplayData = null;
 
@@ -1770,9 +1973,191 @@ function prevGame() {
         gameTimeLeft = 240; // 4분 초기화
         startGameTimer();
         loadQuestion();
-        alert(`${currentGame}경기로 돌아갑니다!`);
+        alert(`${currentGame}경기를 시작합니다!`);
     }
 }
+
+// ===========================================
+// 제시어 게임 관련 함수들
+// ===========================================
+
+// 제시어 게임 시작
+function startWordGame(gameNumber) {
+    if (!teams.length) {
+        alert('먼저 팀을 설정해주세요!');
+        return;
+    }
+
+    wordGameState.currentGame = gameNumber;
+    wordGameState.currentWordIndex = 0;
+    wordGameState.correctCount = 0;
+    wordGameState.timeLeft = 120; // 2분
+    wordGameState.isPlaying = true;
+
+    // 제시어 섞기
+    const gameData = wordGameData[`game${gameNumber}`];
+    wordGameState.shuffledWords = shuffleArray(gameData);
+
+    document.getElementById('wordGameFullscreen').style.display = 'flex';
+    updateWordGameDisplay();
+    startWordGameTimer();
+}
+
+// 제시어 게임 화면 업데이트
+function updateWordGameDisplay() {
+    const currentWord = wordGameState.shuffledWords[wordGameState.currentWordIndex];
+    
+    document.getElementById('wordGameTitle').textContent = `제시어 게임 - ${wordGameState.currentGame}경기`;
+    document.getElementById('currentWordIndex').textContent = wordGameState.currentWordIndex + 1;
+    document.getElementById('koreanWord').textContent = currentWord.korean;
+    document.getElementById('japaneseWord').textContent = currentWord.japanese;
+    document.getElementById('correctCounter').textContent = wordGameState.correctCount;
+    
+    updateWordGameTimer();
+}
+
+// 제시어 게임 타이머 시작
+function startWordGameTimer() {
+    if (wordGameState.timerInterval) {
+        clearInterval(wordGameState.timerInterval);
+    }
+    
+    wordGameState.timerInterval = setInterval(() => {
+        wordGameState.timeLeft--;
+        updateWordGameTimer();
+        
+        if (wordGameState.timeLeft <= 0) {
+            endWordGame();
+        }
+    }, 1000);
+}
+
+// 제시어 게임 타이머 업데이트
+function updateWordGameTimer() {
+    const minutes = Math.floor(wordGameState.timeLeft / 60);
+    const seconds = wordGameState.timeLeft % 60;
+    const timerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    document.getElementById('wordGameTimer').textContent = timerText;
+    
+    // 시간이 30초 이하일 때 경고 색상
+    const timerEl = document.getElementById('wordGameTimer');
+    if (wordGameState.timeLeft <= 30) {
+        timerEl.style.color = '#ff4444';
+        timerEl.style.fontWeight = 'bold';
+    } else {
+        timerEl.style.color = '#333';
+        timerEl.style.fontWeight = 'normal';
+    }
+}
+
+// 정답 처리
+function correctAnswer() {
+    if (!wordGameState.isPlaying) return;
+    
+    wordGameState.correctCount++;
+    nextWord();
+}
+
+// 스킵 처리
+function skipWord() {
+    if (!wordGameState.isPlaying) return;
+    
+    nextWord();
+}
+
+// 다음 제시어로 이동
+function nextWord() {
+    if (wordGameState.currentWordIndex < wordGameState.shuffledWords.length - 1) {
+        wordGameState.currentWordIndex++;
+        updateWordGameDisplay();
+    } else {
+        // 모든 제시어 완료
+        endWordGame();
+    }
+}
+
+// 제시어 게임 종료
+function endWordGame() {
+    wordGameState.isPlaying = false;
+    
+    if (wordGameState.timerInterval) {
+        clearInterval(wordGameState.timerInterval);
+        wordGameState.timerInterval = null;
+    }
+    
+    document.getElementById('wordGameFullscreen').style.display = 'none';
+    document.getElementById('finalScore').textContent = wordGameState.correctCount;
+    document.getElementById('wordGameResult').style.display = 'flex';
+    
+    // 사운드 재생
+    playSound('end');
+}
+
+// 제시어 게임 재시작
+function restartWordGame() {
+    document.getElementById('wordGameResult').style.display = 'none';
+    startWordGame(wordGameState.currentGame);
+}
+
+// 제시어 게임 결과 화면 닫기
+function closeWordGameResult() {
+    document.getElementById('wordGameResult').style.display = 'none';
+}
+
+// 제시어 게임 닫기
+function closeWordGame() {
+    wordGameState.isPlaying = false;
+    
+    if (wordGameState.timerInterval) {
+        clearInterval(wordGameState.timerInterval);
+        wordGameState.timerInterval = null;
+    }
+    
+    document.getElementById('wordGameFullscreen').style.display = 'none';
+}
+
+// 제시어 게임 네비게이션
+function goToWordGame(gameNumber) {
+    if (gameNumber >= 1 && gameNumber <= 6) {
+        startWordGame(gameNumber);
+    }
+}
+
+function prevWordGame() {
+    if (wordGameState.currentGame > 1) {
+        startWordGame(wordGameState.currentGame - 1);
+    }
+}
+
+function nextWordGame() {
+    if (wordGameState.currentGame < 6) {
+        startWordGame(wordGameState.currentGame + 1);
+    }
+}
+
+// 키보드 이벤트 처리
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        // 제시어 게임 관련 화면 닫기
+        if (document.getElementById('wordGameFullscreen').style.display === 'flex') {
+            closeWordGame();
+        }
+        if (document.getElementById('wordGameResult').style.display === 'flex') {
+            closeWordGameResult();
+        }
+    }
+    
+    // 제시어 게임 진행 중 키보드 단축키
+    if (document.getElementById('wordGameFullscreen').style.display === 'flex' && wordGameState.isPlaying) {
+        if (event.key === ' ' || event.key === 'Enter') {
+            event.preventDefault();
+            correctAnswer();
+        } else if (event.key === 'ArrowRight' || event.key === 's' || event.key === 'S') {
+            event.preventDefault();
+            skipWord();
+        }
+    }
+});
 
 // 특정 경기로 이동
 function goToGame(gameNumber) {

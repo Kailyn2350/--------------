@@ -291,16 +291,105 @@
             <div class="game-info">
                 <div class="game-title">사용법</div>
                 <div class="game-description">
-                    <strong>제시어 표시:</strong> 제시어를 클릭하면 큰 화면으로 표시됩니다.<br>
-                    <strong>그림 표시:</strong> 그림을 클릭하면 큰 화면으로 표시됩니다.<br>
-                    <strong>제시어 관리:</strong> 새로운 제시어를 추가하거나 기존 제시어를 삭제할 수 있습니다.<br>
-                    <strong>단축키:</strong> ESC 키로 큰 화면을 닫을 수 있습니다.<br><br>
-                    <strong>💡 팁:</strong> 우클릭으로 제시어를 삭제할 수 있습니다.
+                    <strong>제시어 게임:</strong> 6경기로 구성되며, 각 경기당 20개의 제시어가 제공됩니다.<br>
+                    <strong>게임 진행:</strong> 2분 제한시간 동안 제시어를 맞추고 정답/스킵 버튼을 활용하세요.<br>
+                    <strong>제시어 섞기:</strong> 매 게임 시작 시 해당 경기의 제시어 순서가 랜덤하게 섞입니다.<br>
+                    <strong>전체 셔플:</strong> 아래 셔플 버튼으로 모든 제시어를 섞어서 6경기에 새롭게 분배할 수 있습니다.<br>
+                    <strong>일본어 번역:</strong> 각 제시어마다 일본어 번역이 함께 제공됩니다.<br>
+                    <strong>단축키:</strong> ESC 키로 게임을 종료할 수 있습니다.
+                </div>
+            </div>
+
+            <div class="word-shuffle-controls">
+                <h3>제시어 전체 셔플</h3>
+                <div class="shuffle-description">
+                    <p>현재 상태: <span id="shuffleStatus">기본 카테고리별 구성</span></p>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">
+                        • 기본: 1경기(동물), 2경기(교통수단), 3경기(스포츠용품), 4경기(전자기기), 5경기(음식), 6경기(생활용품)<br>
+                        • 셔플: 모든 제시어를 섞어서 각 경기에 랜덤하게 20개씩 새로 배치
+                    </p>
+                </div>
+                <div class="shuffle-buttons">
+                    <button class="shuffle-btn" onclick="shuffleAllWords()">🎲 전체 셔플</button>
+                    <button class="reset-btn" onclick="resetToOriginalWords()">🔄 기본으로 복원</button>
+                </div>
+            </div>
+
+            <div class="word-game-controls">
+                <h3>제시어 게임 시작</h3>
+                <div class="game-selector">
+                    <button class="game-btn" onclick="startWordGame(1)">1경기 시작</button>
+                    <button class="game-btn" onclick="startWordGame(2)">2경기 시작</button>
+                    <button class="game-btn" onclick="startWordGame(3)">3경기 시작</button>
+                    <button class="game-btn" onclick="startWordGame(4)">4경기 시작</button>
+                    <button class="game-btn" onclick="startWordGame(5)">5경기 시작</button>
+                    <button class="game-btn" onclick="startWordGame(6)">6경기 시작</button>
                 </div>
             </div>
 
             <div id="wordManagementContainer">
-                <!-- 제시어 관리 패널이 여기에 동적으로 생성됩니다 -->
+                <!-- 기존 제시어 관리 패널 -->
+            </div>
+        </div>
+
+        <!-- 제시어 게임 전체화면 -->
+        <div id="wordGameFullscreen" class="word-game-fullscreen" style="display: none;">
+            <div class="word-game-container">
+                <div class="word-game-header">
+                    <h1 id="wordGameTitle">제시어 게임 - 1경기</h1>
+                    <div class="word-game-progress">
+                        <span id="currentWordIndex">1</span> / 20
+                    </div>
+                    <div class="word-game-timer">
+                        <span id="wordGameTimer">02:00</span>
+                    </div>
+                    <button class="close-word-game" onclick="closeWordGame()">×</button>
+                </div>
+
+                <div class="word-game-content">
+                    <div class="word-display-section">
+                        <div class="korean-word" id="koreanWord">축구</div>
+                        <div class="japanese-word" id="japaneseWord">サッカー</div>
+                    </div>
+
+                    <div class="word-game-score">
+                        <div class="score-display">
+                            정답 수: <span id="correctCounter">0</span>개
+                        </div>
+                    </div>
+
+                    <div class="word-game-controls">
+                        <button class="word-game-btn correct-btn" onclick="correctAnswer()">정답 ✓</button>
+                        <button class="word-game-btn skip-btn" onclick="skipWord()">스킵 →</button>
+                    </div>
+
+                    <div class="word-game-navigation">
+                        <button class="word-nav-btn" onclick="prevWordGame()">◀ 이전 경기</button>
+                        <button class="word-nav-btn" onclick="goToWordGame(1)">1경기</button>
+                        <button class="word-nav-btn" onclick="goToWordGame(2)">2경기</button>
+                        <button class="word-nav-btn" onclick="goToWordGame(3)">3경기</button>
+                        <button class="word-nav-btn" onclick="goToWordGame(4)">4경기</button>
+                        <button class="word-nav-btn" onclick="goToWordGame(5)">5경기</button>
+                        <button class="word-nav-btn" onclick="goToWordGame(6)">6경기</button>
+                        <button class="word-nav-btn" onclick="nextWordGame()">다음 경기 ▶</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 제시어 게임 결과 화면 -->
+        <div id="wordGameResult" class="word-game-result" style="display: none;">
+            <div class="result-container">
+                <h2>게임 종료!</h2>
+                <div class="final-score">
+                    <div class="score-text">맞춘 개수</div>
+                    <div class="score-number" id="finalScore">0</div>
+                    <div class="score-text">/ 20</div>
+                </div>
+                <div class="result-actions">
+                    <button class="result-btn" onclick="restartWordGame()">다시 시작</button>
+                    <button class="result-btn" onclick="closeWordGameResult()">닫기</button>
+                </div>
             </div>
         </div>
 
