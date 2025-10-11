@@ -1190,8 +1190,8 @@ function getGameTimeLimit(gameNumber) {
 let quizShuffled = false;
 let originalQuizDataBackup = null;
 
-// Fisher-Yates 셔플
-function shuffleArray(arr) {
+// Fisher-Yates 셔플 (퀴즈용 - 배열을 직접 수정)
+function shuffleQuizArray(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
@@ -1213,7 +1213,7 @@ function shuffleAllAndRedistribute() {
     });
 
     // 전체 셔플
-    shuffleArray(pool);
+    shuffleQuizArray(pool);
 
     // 다시 분배: 앞에서부터 각 경기 개수만큼 차례대로 슬라이스
     let offset = 0;
@@ -1315,9 +1315,13 @@ function updateScoreboard() {
             <div class="team-name">${team.name}</div>
             <div class="team-score">${team.score}</div>
             <div class="score-controls">
-                <button class="score-btn" onclick="changeScore(${index}, 1)">+1</button>
-                <button class="score-btn" onclick="changeScore(${index}, -1)">-1</button>
-                <button class="score-btn" onclick="resetScore(${index})">리셋</button>
+                <button class="score-btn plus" onclick="changeScore(${index}, 100)">+100</button>
+                <button class="score-btn plus" onclick="changeScore(${index}, 50)">+50</button>
+                <button class="score-btn plus" onclick="changeScore(${index}, 10)">+10</button>
+                <button class="score-btn minus" onclick="changeScore(${index}, -10)">-10</button>
+                <button class="score-btn minus" onclick="changeScore(${index}, -50)">-50</button>
+                <button class="score-btn minus" onclick="changeScore(${index}, -100)">-100</button>
+                <button class="score-btn reset" onclick="resetScore(${index})">리셋</button>
             </div>
         `;
 
@@ -1373,8 +1377,8 @@ function showWinner() {
     }
 }
 
-// 우승팀 발표: 전체화면 오버레이 + 드럼롤 + 텍스트 애니메이션
-function showWinnerOverlay() {
+// 순위별 발표 함수 (1등=우승, 2등, 3등)
+function showRankingOverlay(rank) {
     const overlay = document.getElementById('winnerOverlay');
     const textEl = document.getElementById('winnerText');
     const audio = document.getElementById('drumrollAudio');
@@ -1383,18 +1387,146 @@ function showWinnerOverlay() {
         return;
     }
 
-    // 실제 우승팀 이름(들) 계산
+    // 팀 확인
     if (!teams || teams.length === 0) {
         showAlert('먼저 팀을 설정해주세요!', 'warning');
         return;
     }
-    const maxScore = Math.max(...teams.map(t => t.score));
-    const winners = teams.filter(t => t.score === maxScore);
-    const winnerLabel = winners.length > 1
-        ? winners.map(w => w.name).join(', ')
-        : winners[0].name;
-    textEl.textContent = winnerLabel;
 
+    // 점수별로 팀 정렬 (내림차순)
+    const sortedTeams = [...teams].sort((a, b) => b.score - a.score);
+    
+    // 동점자 처리를 위해 고유 점수 목록 생성
+    const uniqueScores = [...new Set(sortedTeams.map(t => t.score))].sort((a, b) => b - a);
+    
+    // 요청한 순위가 존재하는지 확인
+    if (rank > uniqueScores.length) {
+        showAlert(`${rank}등에 해당하는 팀이 없습니다.`, 'warning');
+        return;
+    }
+    
+    // 해당 순위의 점수
+    const targetScore = uniqueScores[rank - 1];
+    
+    // 해당 점수를 가진 팀들
+    const rankedTeams = sortedTeams.filter(t => t.score === targetScore);
+    
+    // 발표 메시지 생성
+    let rankLabel;
+    switch(rank) {
+        case 1:
+            rankLabel = '🥇 우승팀';
+            break;
+        case 2:
+            rankLabel = '🥈 2등';
+            break;
+        case 3:
+            rankLabel = '🥉 3등';
+            break;
+        default:
+            rankLabel = `${rank}등`;
+    }
+    
+    const teamNames = rankedTeams.length > 1
+        ? rankedTeams.map(t => t.name).join(', ')
+        : rankedTeams[0].name;
+    
+    textEl.textContent = `${rankLabel}\n\n${teamNames}`;
+    
+    showOverlayAnimation(overlay, textEl, audio);
+}
+
+// 기존 우승팀 발표 함수 (하위 호환성)
+function showWinnerOverlay() {
+    showRankingOverlay(1);
+}
+
+// 전체 순위 표시 오버레이
+function showFullRankingsOverlay() {
+    const overlay = document.getElementById('rankingsOverlay');
+    const container = document.getElementById('rankingsFullscreenContainer');
+    
+    if (!overlay || !container) {
+        showAlert('순위 표시 요소를 찾을 수 없습니다.', 'warning');
+        return;
+    }
+    
+    // 팀 확인
+    if (!teams || teams.length === 0) {
+        showAlert('먼저 팀을 설정해주세요!', 'warning');
+        return;
+    }
+    
+    // 점수별로 팀 정렬 (내림차순)
+    const sortedTeams = [...teams].sort((a, b) => b.score - a.score);
+    
+    // 고유 점수 목록 생성 (순위 계산용)
+    const uniqueScores = [...new Set(sortedTeams.map(t => t.score))].sort((a, b) => b - a);
+    
+    // 순위 표시
+    container.innerHTML = '';
+    
+    sortedTeams.forEach((team, index) => {
+        // 실제 순위 계산 (동점자는 같은 순위)
+        const rank = uniqueScores.indexOf(team.score) + 1;
+        
+        const rankingDiv = document.createElement('div');
+        rankingDiv.className = `rankings-fullscreen-item rank-${rank}`;
+        
+        // 메달 이모지
+        let medal = '';
+        if (rank === 1) medal = '🥇';
+        else if (rank === 2) medal = '🥈';
+        else if (rank === 3) medal = '🥉';
+        
+        rankingDiv.innerHTML = `
+            ${medal ? `<div class="rankings-fullscreen-medal">${medal}</div>` : ''}
+            <div class="rankings-fullscreen-position">${rank}위</div>
+            <div class="rankings-fullscreen-team">
+                <div class="rankings-fullscreen-team-name">${team.name}</div>
+            </div>
+        `;
+        
+        container.appendChild(rankingDiv);
+    });
+    
+    // 오버레이 표시
+    overlay.style.display = 'flex';
+    overlay.classList.add('active');
+    document.body.classList.add('no-scroll');
+    
+    // 닫기 핸들러 설정
+    const close = () => {
+        overlay.classList.remove('active');
+        overlay.style.display = 'none';
+        document.body.classList.remove('no-scroll');
+        if (document.fullscreenElement) {
+            document.exitFullscreen().catch(() => {});
+        }
+        // 이벤트 제거
+        const btn = document.getElementById('rankingsCloseBtn');
+        if (btn) btn.removeEventListener('click', close);
+        document.removeEventListener('keydown', onEsc);
+    };
+    
+    const onEsc = (e) => { if (e.key === 'Escape') close(); };
+    
+    const btn = document.getElementById('rankingsCloseBtn');
+    if (btn) {
+        btn.removeEventListener('click', close); // 기존 이벤트 제거
+        btn.addEventListener('click', close);
+    }
+    document.removeEventListener('keydown', onEsc); // 기존 이벤트 제거
+    document.addEventListener('keydown', onEsc);
+    
+    // 전체화면 진입
+    if (overlay.requestFullscreen) {
+        overlay.requestFullscreen().catch(() => {});
+    }
+}
+
+// 오버레이 애니메이션 실행
+function showOverlayAnimation(overlay, textEl, audio) {
     // 초기 상태 리셋
     overlay.style.display = 'flex';
     overlay.classList.add('active');
@@ -2815,6 +2947,7 @@ function correctAnswer() {
     if (!wordGameState.isPlaying) return;
     
     wordGameState.correctCount++;
+    playSound('correct'); // 정답 효과음 재생
     nextWord();
 }
 
