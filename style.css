@@ -969,7 +969,7 @@ body {
 }
 
 .quiz-progress {
-    font-size: 2rem; /* 1.5rem → 2rem로 증가 */
+    font-size: 1.3rem;
     background: rgba(255,255,255,0.2);
     padding: 10px 20px;
     border-radius: 25px;
@@ -1016,11 +1016,11 @@ body {
 }
 
 .question-section h2 {
-    font-size: 3.2rem; /* 2.8rem → 3.2rem로 더 증가 */
-    line-height: 1.3; /* 1.4 → 1.3으로 줄여 더 컴팩트하게 */
+    font-size: 2.2rem;
+    line-height: 1.3;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    margin-bottom: 25px;
-    word-break: keep-all; /* 한국어 단어 단위로 줄바꿈 */
+    margin-bottom: 20px;
+    word-break: keep-all;
 }
 
 .options-section {
@@ -1083,13 +1083,13 @@ body {
 .option-letter {
     background: rgba(255,255,255,0.9);
     color: #1e3c72;
-    width: 50px; /* 40px → 50px로 증가 */
-    height: 50px; /* 40px → 50px로 증가 */
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem; /* 1.5rem → 1.8rem로 증가 */
+    font-size: 1.3rem;
     font-weight: bold;
     flex-shrink: 0;
 }
@@ -1106,9 +1106,37 @@ body {
 }
 
 .option-text {
-    font-size: 2rem; /* 1.6rem → 2rem로 증가 */
+    font-size: 1.4rem;
     line-height: 1.4;
     flex: 1;
+}
+
+.hint-section {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0 40px;
+}
+
+.hint-display {
+    background: rgba(255, 165, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border: 2px solid #FFA500;
+    border-radius: 15px;
+    padding: 30px;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.hint-display h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: #FF8C00;
+    line-height: 1.4;
+    word-break: keep-all;
+}
+
+.hint-display p {
+    line-height: 1.6;
+    color: white;
 }
 
 .answer-section {
@@ -1138,9 +1166,11 @@ body {
 }
 
 .correct-answer h3 {
-    font-size: 2.5rem; /* 2rem → 2.5rem로 증가 */
+    font-size: 1.6rem;
     margin-bottom: 15px;
     color: #43e97b;
+    line-height: 1.4;
+    word-break: keep-all;
 }
 
 .quiz-controls {
@@ -1153,8 +1183,8 @@ body {
 }
 
 .quiz-btn {
-    padding: 15px 30px;
-    font-size: 1.5rem; /* 1.2rem → 1.5rem로 증가 */
+    padding: 12px 24px;
+    font-size: 1.1rem;
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -1342,13 +1372,13 @@ body.no-scroll { overflow: hidden; }
     }
 
     .quiz-progress {
-        font-size: 1.6rem; /* 1.2rem → 1.6rem로 증가 */
+        font-size: 1.1rem;
         padding: 8px 16px;
     }
 
     .question-section h2 {
-        font-size: 2.4rem; /* 2rem → 2.4rem로 더 증가 */
-        line-height: 1.2; /* 더 컴팩트하게 */
+        font-size: 1.6rem;
+        line-height: 1.2;
     }
 
     .question-section {
@@ -1363,21 +1393,21 @@ body.no-scroll { overflow: hidden; }
     }
 
     .option-text {
-        font-size: 1.6rem; /* 1.3rem → 1.6rem로 증가 */
+        font-size: 1.1rem;
     }
 
     .quiz-controls {
         flex-direction: column;
         align-items: center;
-        padding: 25px 15px; /* 여백 조정 */
+        padding: 25px 15px;
         margin-bottom: 15px;
     }
 
     .quiz-btn {
         width: 80%;
         max-width: 300px;
-        font-size: 1.3rem; /* 기본값 추가 */
-        margin-bottom: 10px; /* 버튼 간 여백 */
+        font-size: 1rem;
+        margin-bottom: 10px;
     }
 }
 
@@ -2095,14 +2125,14 @@ body.no-scroll { overflow: hidden; }
     align-items: center;
     background: rgba(255, 255, 255, 0.98);
     border-radius: 30px;
-    padding: 40px;
+    padding: 25px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
 .rankings-title {
     color: #667eea;
-    font-size: 3rem;
-    margin-bottom: 30px;
+    font-size: 2rem;
+    margin-bottom: 20px;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     animation: slideInDown 0.5s ease-out;
@@ -2123,19 +2153,19 @@ body.no-scroll { overflow: hidden; }
     flex: 1;
     width: 100%;
     overflow-y: auto;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 8px;
 }
 
 .rankings-fullscreen-item {
     display: flex;
     align-items: center;
     background: white;
-    padding: 25px 30px;
-    border-radius: 20px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    padding: 12px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     animation: slideInRight 0.5s ease-out;
     animation-fill-mode: both;
@@ -2165,32 +2195,32 @@ body.no-scroll { overflow: hidden; }
 }
 
 .rankings-fullscreen-item.rank-1 {
-    border-left: 8px solid #FFD700;
+    border-left: 5px solid #FFD700;
     background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
 }
 
 .rankings-fullscreen-item.rank-2 {
-    border-left: 8px solid #C0C0C0;
+    border-left: 5px solid #C0C0C0;
     background: linear-gradient(135deg, rgba(192, 192, 192, 0.15), rgba(192, 192, 192, 0.05));
 }
 
 .rankings-fullscreen-item.rank-3 {
-    border-left: 8px solid #CD7F32;
+    border-left: 5px solid #CD7F32;
     background: linear-gradient(135deg, rgba(205, 127, 50, 0.15), rgba(205, 127, 50, 0.05));
 }
 
 .rankings-fullscreen-medal {
-    font-size: 4rem;
-    margin-right: 20px;
+    font-size: 2rem;
+    margin-right: 12px;
     animation: bounce 2s infinite;
 }
 
 .rankings-fullscreen-position {
-    font-size: 2.5rem;
+    font-size: 1.4rem;
     font-weight: bold;
     color: #667eea;
-    margin-right: 20px;
-    min-width: 80px;
+    margin-right: 12px;
+    min-width: 50px;
     text-align: center;
 }
 
@@ -2199,7 +2229,7 @@ body.no-scroll { overflow: hidden; }
 }
 
 .rankings-fullscreen-team-name {
-    font-size: 2.5rem;
+    font-size: 1.4rem;
     font-weight: bold;
     color: #333;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);

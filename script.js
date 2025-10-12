@@ -603,145 +603,244 @@ let quizDataByGame = {
         }
     ],
     
-    game4: [ // 4경기 - 문화/예술/스포츠/현대
+    game4: [ // 4경기 - 고난이도 문제 (주관식 형태 포함)
         {
-            question: "일본의 전통 정원의 미학적 특징으로 옳지 않은 것은?",
-            options: ["비대칭적 구조", "인공적 조형물 최소화", "직선적 대칭 강조", "계절의 변화를 고려한 배치"],
-            correct: "C",
-            explanation: "일본 전통 정원은 자연스러운 비대칭을 추구합니다."
-        },
-        {
-            question: "일본의 대표적 전통 인형극은?",
-            options: ["분라쿠", "가부키", "노(能)", "교겐"],
-            correct: "A",
-            explanation: "분라쿠는 일본의 전통 인형극입니다."
-        },
-        {
-            question: "세계 최초로 세계문화유산과 자연유산을 동시에 보유한 일본의 섬은?",
-            options: ["홋카이도", "야쿠시마", "오키나와", "교토"],
+            question: "양자역학의 불확정성 원리를 제시한 독일 물리학자의 이름은?",
+            options: ["닐스 보어", "베르너 하이젠베르크", "에르빈 슈뢰딩거", "볼프강 파울리"],
             correct: "B",
-            explanation: "야쿠시마는 복합유산으로 등재된 일본의 섬입니다."
+            explanation: "베르너 하이젠베르크가 1927년 불확정성 원리를 발표했습니다."
         },
         {
-            question: "일본의 전통 다도(茶道)를 체계화한 인물은?",
-            options: ["센노 리큐", "도쿠가와 이에야스", "오다 노부나가", "미야모토 무사시"],
+            question: "DNA의 이중나선 구조를 발견한 과학자 조합으로 옳은 것은?",
+            options: ["왓슨과 크릭", "다윈과 멘델", "파스퇴르와 코흐", "프랭클린과 윌킨스"],
             correct: "A",
-            explanation: "센노 리큐가 일본의 전통 다도를 체계화했습니다."
+            explanation: "제임스 왓슨과 프랜시스 크릭이 1953년 DNA 이중나선 구조를 규명했습니다."
         },
         {
-            question: "최초로 지동설을 주장한 고대 그리스 학자는?",
-            options: ["아리스토텔레스", "코페르니쿠스", "아리스타르코스", "갈릴레오"],
-            correct: "C",
-            explanation: "아리스타르코스가 최초로 지동설을 주장했습니다."
-        },
-        {
-            question: "인체에서 가장 작은 뼈는?",
-            options: ["침골", "추골", "등골", "고실골"],
+            question: "일본 에도시대 대표 화가로 '부악삼십육경(富嶽三十六景)'을 그린 우키요에 작가는?",
+            options: ["가쓰시카 호쿠사이", "우타가와 히로시게", "기타가와 우타마로", "도샤쿠사이 샤라쿠"],
             correct: "A",
-            explanation: "침골은 귀 안에 있는 가장 작은 뼈입니다."
+            explanation: "가쓰시카 호쿠사이가 후지산 36경을 그린 대표적 우키요에 화가입니다."
         },
         {
-            question: "빛의 세 가지 원색은?",
-            options: ["빨강·노랑·파랑", "빨강·초록·파랑", "빨강·파랑·흰색", "초록·노랑·파랑"],
+            question: "중세 유럽에서 연금술사들이 찾고자 했던 '만물을 금으로 바꾸는 물질'을 무엇이라 했는가?",
+            options: ["현자의 돌", "엘릭서", "아쿠아 포르티스", "필로소피아"],
+            correct: "A",
+            explanation: "현자의 돌(Philosopher's Stone)은 비금속을 금으로 변환시킨다고 믿어진 물질입니다."
+        },
+        {
+            question: "프랑스 인상파 화가 모네의 작품 '인상, 해돋이'가 전시된 연도는?",
+            options: ["1862년", "1874년", "1886년", "1894년"],
             correct: "B",
-            explanation: "빛의 삼원색은 빨강, 초록, 파랑입니다."
+            explanation: "1874년 전시회에서 '인상, 해돋이'가 공개되며 인상주의라는 명칭이 탄생했습니다."
         },
         {
-            question: "인류가 처음으로 원자폭탄을 투하한 도시는?",
-            options: ["도쿄", "나가사키", "히로시마", "오사카"],
+            question: "셰익스피어의 4대 비극에 속하지 않는 작품은?",
+            options: ["햄릿", "오셀로", "안토니우스와 클레오파트라", "리어왕"],
             correct: "C",
-            explanation: "1945년 8월 6일 히로시마에 최초로 원자폭탄이 투하되었습니다."
+            explanation: "4대 비극은 햄릿, 오셀로, 리어왕, 맥베스입니다."
         },
         {
-            question: "세계 최초로 인류의 게놈 지도를 완성한 프로젝트의 이름은?",
-            options: ["GenomeX", "DNA2020", "Human Genome Project", "BioMap"],
-            correct: "C",
-            explanation: "Human Genome Project가 인류 게놈 지도를 완성했습니다."
+            question: "고대 그리스의 스토아학파 철학자로 로마 황제이기도 했던 인물은?",
+            options: ["세네카", "마르쿠스 아우렐리우스", "에픽테토스", "제논"],
+            correct: "B",
+            explanation: "마르쿠스 아우렐리우스는 로마 5현제 중 한 명이자 스토아 철학자였습니다."
         },
         {
-            question: "『파우스트』를 쓴 독일의 대문호는?",
-            options: ["괴테", "실러", "하이네", "토마스 만"],
+            question: "20세기 초 독일 표현주의 미술 그룹 '다리파(Die Brücke)'의 중심 인물은?",
+            options: ["에른스트 루트비히 키르히너", "바실리 칸딘스키", "파울 클레", "에곤 실레"],
             correct: "A",
-            explanation: "요한 볼프강 폰 괴테가 『파우스트』를 썼습니다."
+            explanation: "키르히너는 다리파의 창립 멤버이자 대표적 표현주의 화가입니다."
         },
         {
-            question: "피카소의 화풍 중, '게르니카'를 대표하는 시기는?",
-            options: ["청색 시대", "장미 시대", "입체파 시대", "게르니카 시대"],
+            question: "노벨 문학상을 수상한 최초의 아시아인 작가는?",
+            options: ["가와바타 야스나리", "타고르", "오에 겐자부로", "루쉰"],
+            correct: "B",
+            explanation: "인도의 시인 라빈드라나트 타고르가 1913년 아시아 최초로 노벨 문학상을 받았습니다."
+        },
+        {
+            question: "고대 바빌로니아의 법전 '함무라비 법전'의 핵심 원칙은?",
+            options: ["황금률", "동해보복법", "자연법", "관습법"],
+            correct: "B",
+            explanation: "함무라비 법전은 '눈에는 눈, 이에는 이'의 동해보복법을 기반으로 합니다."
+        },
+        {
+            question: "르네상스 시대 피렌체 메디치 가문의 후원을 받은 조각가로 '다비드상'을 제작한 인물은?",
+            options: ["레오나르도 다 빈치", "미켈란젤로", "도나텔로", "베르니니"],
+            correct: "B",
+            explanation: "미켈란젤로의 다비드상(1501-1504)은 르네상스 조각의 걸작입니다."
+        },
+        {
+            question: "일본 헤이안 시대 문학의 대표작 '겐지모노가타리(源氏物語)'의 저자는?",
+            options: ["무라사키 시키부", "세이 쇼나곤", "이즈미 시키부", "사라시나 일기"],
+            correct: "A",
+            explanation: "무라사키 시키부가 11세기 초에 쓴 세계 최초의 장편소설입니다."
+        },
+        {
+            question: "상대성이론을 제안한 아인슈타인이 노벨 물리학상을 받은 연구 주제는?",
+            options: ["일반 상대성이론", "특수 상대성이론", "광전효과", "브라운 운동"],
             correct: "C",
-            explanation: "게르니카는 피카소의 입체파 시기 대표작입니다."
+            explanation: "아인슈타인은 1921년 광전효과 연구로 노벨상을 수상했습니다."
         },
         {
-            question: "세계 3대 비극 작가로 알려진 고대 그리스 인물은 아닌 사람은?",
-            options: ["아이스킬로스", "소포클레스", "에우리피데스", "호메로스"],
+            question: "중국 송나라 시대에 발명되어 세계사를 바꾼 '4대 발명'에 속하지 않는 것은?",
+            options: ["화약", "나침반", "인쇄술", "증기기관"],
             correct: "D",
-            explanation: "호메로스는 서사시인이며, 3대 비극 작가는 아이스킬로스, 소포클레스, 에우리피데스입니다."
+            explanation: "중국 4대 발명은 화약, 나침반, 인쇄술, 종이입니다."
         },
         {
-            question: "셰익스피어의 4대 비극이 아닌 것은?",
-            options: ["리어왕", "오셀로", "맥베스", "로미오와 줄리엣"],
-            correct: "D",
-            explanation: "로미오와 줄리엣은 비극이지만 4대 비극에는 포함되지 않습니다."
-        },
-        {
-            question: "한국 현대시에서 '진달래꽃'을 쓴 시인은?",
-            options: ["윤동주", "김소월", "이상", "백석"],
-            correct: "B",
-            explanation: "김소월이 '진달래꽃'을 썼습니다."
-        },
-        {
-            question: "한국 프로야구 원년은 언제일까?",
-            options: ["1979년", "1982년", "1984년", "1986년"],
-            correct: "B",
-            explanation: "한국 프로야구는 1982년에 시작되었습니다."
-        },
-        {
-            question: "올림픽 마라톤에서 최초로 2연패를 달성한 선수는?",
-            options: ["손기정", "아베베 비킬라", "에밀 자토펙", "카를로스 로페스"],
-            correct: "B",
-            explanation: "아베베 비킬라가 1960년, 1964년 올림픽에서 연속 우승했습니다."
-        },
-        {
-            question: "노벨 평화상을 가장 많이 수상한 나라는?",
-            options: ["미국", "스웨덴", "스위스", "노르웨이"],
+            question: "프랑스 계몽사상가 볼테르의 대표 풍자소설은?",
+            options: ["캉디드", "백과전서", "사회계약론", "페르시아인의 편지"],
             correct: "A",
-            explanation: "미국이 노벨 평화상을 가장 많이 수상했습니다."
+            explanation: "'캉디드'는 볼테르의 대표적 풍자소설로 낙관주의를 비판합니다."
         },
         {
-            question: "세계 최초의 인터넷(ARPANET)이 처음 연결된 해는?",
-            options: ["1965년", "1969년", "1973년", "1983년"],
-            correct: "B",
-            explanation: "1969년 ARPANET이 최초로 구축되어 인터넷의 시작이 되었습니다."
-        },
-        // 추가: 균등 20문제 맞추기 (총 5문 추가)
-        {
-            question: "축구 경기에서 한 팀이 필드 위에 내보내는 선수 수는?",
-            options: ["9명", "10명", "11명", "12명"],
-            correct: "C",
-            explanation: "축구는 골키퍼를 포함해 한 팀 11명이 동시에 뛰는 스포츠입니다."
+            question: "고대 그리스 철학자 플라톤이 세운 학교의 이름은?",
+            options: ["아카데미아", "리케이온", "스토아", "키니코스"],
+            correct: "A",
+            explanation: "플라톤은 BC 387년경 아테네에 아카데미아를 설립했습니다."
         },
         {
-            question: "물의 끓는점(섭씨)은 보통 몇 도일까요?",
-            options: ["90도", "95도", "100도", "110도"],
-            correct: "C",
-            explanation: "표준 기압(1기압)에서 물의 끓는점은 100°C입니다."
+            question: "중세 이슬람 세계에서 철학, 의학, 수학을 집대성한 학자 이븐 시나의 라틴어 이름은?",
+            options: ["아비센나", "아베로에스", "알 콰리즈미", "알 파라비"],
+            correct: "A",
+            explanation: "이븐 시나의 라틴어 이름은 아비센나(Avicenna)입니다."
+        },
+        // 주관식 문제 추가
+        {
+            question: "셰익스피어의 4대 비극 작품 4개를 모두 말하시오.",
+            type: "essay",
+            options: [],
+            correct: "주관식",
+            answer: "햄릿(Hamlet), 오셀로(Othello), 리어왕(King Lear), 맥베스(Macbeth)",
+            hint: "힌트: H로 시작하는 작품, O로 시작하는 작품, K로 시작하는 작품, M로 시작하는 작품",
+            explanation: "셰익스피어의 4대 비극은 햄릿, 오셀로, 리어왕, 맥베스입니다."
         },
         {
-            question: "가장 유명한 고리를 가진 태양계의 행성은?",
-            options: ["목성", "토성", "천왕성", "해왕성"],
-            correct: "B",
-            explanation: "여러 행성에 고리가 있지만, 토성의 고리가 가장 유명하고 뚜렷합니다."
+            question: "르네상스 3대 예술가의 이름을 모두 말하시오.",
+            type: "essay",
+            options: [],
+            correct: "주관식",
+            answer: "레오나르도 다 빈치(Leonardo da Vinci), 미켈란젤로(Michelangelo), 라파엘로(Raphael)",
+            hint: "힌트: 모나리자를 그린 화가, 시스티나 성당 천장화를 그린 화가, 아테네 학당을 그린 화가",
+            explanation: "르네상스 3대 거장은 레오나르도 다 빈치, 미켈란젤로, 라파엘로입니다."
         },
         {
-            question: "웹에서 사용하는 하이퍼텍스트 전송 프로토콜의 약자는?",
-            options: ["FTP", "SMTP", "HTTP", "SSH"],
-            correct: "C",
-            explanation: "HTTP는 HyperText Transfer Protocol의 약자입니다."
+            question: "프랑스 혁명의 3대 이념을 순서대로 말하시오.",
+            type: "essay",
+            options: [],
+            correct: "주관식",
+            answer: "자유(Liberté), 평등(Égalité), 박애(Fraternité)",
+            hint: "힌트: L로 시작, É로 시작, F로 시작 (프랑스어 순서)",
+            explanation: "프랑스 혁명의 3대 이념은 자유, 평등, 박애입니다."
         },
         {
-            question: "현재 세계에서 인구가 가장 많은 나라는?",
-            options: ["중국", "인도", "미국", "인도네시아"],
-            correct: "B",
-            explanation: "2023년 이후 인도가 세계 최대 인구 국가입니다."
+            question: "원소 주기율표에서 첫 번째 원소(수소)의 원소기호와 원자번호를 말하시오.",
+            type: "essay",
+            options: [],
+            correct: "주관식",
+            answer: "H (원소기호), 1 (원자번호)",
+            hint: "힌트: Hydrogen의 첫 글자, 가장 작은 자연수",
+            explanation: "수소의 원소기호는 H이고, 원자번호는 1입니다."
+        },
+        {
+            question: "한국의 3대 명절을 모두 말하시오.",
+            type: "essay",
+            options: [],
+            correct: "주관식",
+            answer: "설날, 추석, 단오 (또는 한식)",
+            hint: "힌트: 음력 1월 1일, 음력 8월 15일, 음력 5월 5일",
+            explanation: "한국의 3대 명절은 설날, 추석, 단오입니다."
+        },
+        {
+            question: "태양계 8개 행성을 태양에서 가까운 순서대로 모두 나열하시오.",
+            type: "essay",
+            options: [],
+            correct: "주관식",
+            answer: "수성(Mercury), 금성(Venus), 지구(Earth), 화성(Mars), 목성(Jupiter), 토성(Saturn), 천왕성(Uranus), 해왕성(Neptune)",
+            hint: "힌트: 수금지화목토천해 (My Very Educated Mother Just Served Us Nachos)",
+            explanation: "태양계의 8개 행성은 수성, 금성, 지구, 화성, 목성, 토성, 천왕성, 해왕성 순서입니다."
+        },
+        {
+            question: "세계 3대 미술관의 이름을 말하시오.",
+            type: "essay",
+            options: [],
+            correct: "주관식",
+            answer: "루브르 박물관(Louvre Museum), 대영박물관(British Museum), 메트로폴리탄 미술관(Metropolitan Museum)",
+            hint: "힌트: 파리에 있는 박물관, 런던에 있는 박물관, 뉴욕에 있는 박물관",
+            explanation: "세계 3대 미술관은 루브르 박물관, 대영박물관, 메트로폴리탄 미술관입니다."
+        },
+        {
+            question: "노벨상 6개 부문의 이름을 모두 말하시오.",
+            type: "essay",
+            options: [],
+            correct: "주관식",
+            answer: "물리학상, 화학상, 생리의학상, 문학상, 평화상, 경제학상",
+            hint: "힌트: 과학 3개 (물리, 화학, 의학), 인문 1개, 사회 2개",
+            explanation: "노벨상은 물리학, 화학, 생리의학, 문학, 평화, 경제학 6개 부문이 있습니다."
+        },
+        {
+            question: "세계 4대 문명 발상지를 모두 말하시오.",
+            type: "essay",
+            options: [],
+            correct: "주관식",
+            answer: "메소포타미아 문명, 이집트 문명, 인더스 문명, 황하 문명",
+            hint: "힌트: 티그리스-유프라테스 강, 나일 강, 인더스 강, 황하 강 유역",
+            explanation: "세계 4대 문명은 메소포타미아, 이집트, 인더스, 황하 문명입니다."
+        },
+        {
+            question: "올림픽 5륜기의 5가지 색깔을 모두 말하시오.",
+            type: "essay",
+            options: [],
+            correct: "주관식",
+            answer: "파랑, 노랑, 검정, 초록, 빨강",
+            hint: "힌트: 5대륙을 상징하며, 흰 바탕에 5개의 원으로 구성",
+            explanation: "올림픽 5륜기는 파랑, 노랑, 검정, 초록, 빨강 5가지 색으로 이루어져 있습니다."
+        },
+        {
+            question: "한국의 5대 궁궐 이름을 모두 말하시오.",
+            type: "essay",
+            options: [],
+            correct: "주관식",
+            answer: "경복궁, 창덕궁, 창경궁, 덕수궁, 경희궁",
+            hint: "힌트: 경으로 시작 2개, 창으로 시작 2개, 덕으로 시작 1개",
+            explanation: "조선시대 한양의 5대 궁궐은 경복궁, 창덕궁, 창경궁, 덕수궁, 경희궁입니다."
+        },
+        {
+            question: "세계 3대 종교를 신자 수가 많은 순서대로 나열하시오.",
+            type: "essay",
+            options: [],
+            correct: "주관식",
+            answer: "기독교(Christianity), 이슬람교(Islam), 힌두교(Hinduism)",
+            hint: "힌트: 예수, 무함마드, 브라흐마를 믿는 종교 순서대로",
+            explanation: "세계 3대 종교는 기독교, 이슬람교, 힌두교 순서입니다."
+        },
+        {
+            question: "베토벤의 3대 교향곡(영웅, 운명, 합창)의 번호를 순서대로 말하시오.",
+            type: "essay",
+            options: [],
+            correct: "주관식",
+            answer: "교향곡 3번(영웅), 교향곡 5번(운명), 교향곡 9번(합창)",
+            hint: "힌트: 홀수 번호만 해당 (3, 5, 9번)",
+            explanation: "베토벤의 3대 교향곡은 3번 영웅, 5번 운명, 9번 합창입니다."
+        },
+        {
+            question: "빛의 3원색을 모두 말하시오.",
+            type: "essay",
+            options: [],
+            correct: "주관식",
+            answer: "빨강(Red), 초록(Green), 파랑(Blue)",
+            hint: "힌트: RGB (컴퓨터 모니터의 색상 표현 방식)",
+            explanation: "빛의 3원색은 빨강(Red), 초록(Green), 파랑(Blue)입니다."
+        },
+        {
+            question: "한국 전통 음악의 3대 악기를 말하시오.",
+            type: "essay",
+            options: [],
+            correct: "주관식",
+            answer: "거문고, 가야금, 피리",
+            hint: "힌트: 현악기 2개 (6현, 12현), 관악기 1개",
+            explanation: "한국 전통 음악의 대표적인 악기는 거문고, 가야금, 피리입니다."
         }
     ]
 };
@@ -1138,6 +1237,198 @@ const quizTranslationsJP = {
         q: "世界初のインターネット（ARPANET）が初めて接続された年はいつでしょうか？",
         options: ["1965年", "1969年", "1973年", "1983年"],
         exp: "1969年、ARPANETが構築されインターネットの始まりとなりました。"
+    },
+    // 4경기 고난이도 문제 번역
+    "양자역학의 불확정성 원리를 제시한 독일 물리학자의 이름은?": {
+        q: "量子力学の不確定性原理を提示したドイツの物理学者は誰でしょうか？",
+        options: ["ニールス・ボーア", "ヴェルナー・ハイゼンベルク", "エルヴィン・シュレーディンガー", "ヴォルフガング・パウリ"],
+        exp: "ヴェルナー・ハイゼンベルクが1927年に不確定性原理を発表しました。"
+    },
+    "DNA의 이중나선 구조를 발견한 과학자 조합으로 옳은 것은?": {
+        q: "DNAの二重らせん構造を発見した科学者の組み合わせで正しいものはどれでしょうか？",
+        options: ["ワトソンとクリック", "ダーウィンとメンデル", "パスツールとコッホ", "フランクリンとウィルキンス"],
+        exp: "ジェームズ・ワトソンとフランシス・クリックが1953年にDNAの二重らせん構造を解明しました。"
+    },
+    "일본 에도시대 대표 화가로 '부악삼십육경(富嶽三十六景)'을 그린 우키요에 작가는?": {
+        q: "日本の江戸時代を代表する画家で、『富嶽三十六景』を描いた浮世絵作家は誰でしょうか？",
+        options: ["葛飾北斎", "歌川広重", "喜多川歌麿", "東洲斎写楽"],
+        exp: "葛飾北斎が富士山三十六景を描いた代表的な浮世絵画家です。"
+    },
+    "중세 유럽에서 연금술사들이 찾고자 했던 '만물을 금으로 바꾸는 물질'을 무엇이라 했는가?": {
+        q: "中世ヨーロッパで錬金術師たちが探し求めた『万物を金に変える物質』を何といいましたか？",
+        options: ["賢者の石", "エリクサー", "王水", "フィロソフィア"],
+        exp: "賢者の石（Philosopher's Stone）は非金属を金に変換できると信じられた物質です。"
+    },
+    "프랑스 인상파 화가 모네의 작품 '인상, 해돋이'가 전시된 연도는?": {
+        q: "フランスの印象派画家モネの作品『印象・日の出』が展示された年はいつでしょうか？",
+        options: ["1862年", "1874年", "1886年", "1894年"],
+        exp: "1874年の展覧会で『印象・日の出』が公開され、印象主義という名称が誕生しました。"
+    },
+    "셰익스피어의 4대 비극에 속하지 않는 작품은?": {
+        q: "シェイクスピアの四大悲劇に含まれない作品はどれでしょうか？",
+        options: ["ハムレット", "オセロ", "アントニーとクレオパトラ", "リア王"],
+        exp: "四大悲劇はハムレット、オセロ、リア王、マクベスです。"
+    },
+    "고대 그리스의 스토아학파 철학자로 로마 황제이기도 했던 인물은?": {
+        q: "古代ギリシャのストア派哲学者であり、ローマ皇帝でもあった人物は誰でしょうか？",
+        options: ["セネカ", "マルクス・アウレリウス", "エピクテトス", "ゼノン"],
+        exp: "マルクス・アウレリウスはローマ五賢帝の一人であり、ストア派哲学者でした。"
+    },
+    "20세기 초 독일 표현주의 미술 그룹 '다리파(Die Brücke)'의 중심 인물은?": {
+        q: "20世紀初頭のドイツ表現主義美術グループ『ブリュッケ（Die Brücke）』の中心人物は誰でしょうか？",
+        options: ["エルンスト・ルートヴィヒ・キルヒナー", "ワシリー・カンディンスキー", "パウル・クレー", "エゴン・シーレ"],
+        exp: "キルヒナーはブリュッケの創設メンバーであり、代表的な表現主義画家です。"
+    },
+    "노벨 문학상을 수상한 최초의 아시아인 작가는?": {
+        q: "ノーベル文学賞を受賞した最初のアジア人作家は誰でしょうか？",
+        options: ["川端康成", "タゴール", "大江健三郎", "魯迅"],
+        exp: "インドの詩人ラビンドラナート・タゴールが1913年にアジア初のノーベル文学賞を受賞しました。"
+    },
+    "고대 바빌로니아의 법전 '함무라비 법전'의 핵심 원칙은?": {
+        q: "古代バビロニアの法典『ハンムラビ法典』の核心原則は何でしょうか？",
+        options: ["黄金律", "同害報復法", "自然法", "慣習法"],
+        exp: "ハンムラビ法典は『目には目を、歯には歯を』の同害報復法を基盤としています。"
+    },
+    "르네상스 시대 피렌체 메디치 가문의 후원을 받은 조각가로 '다비드상'을 제작한 인물은?": {
+        q: "ルネサンス時代のフィレンツェのメディチ家の支援を受けた彫刻家で、『ダビデ像』を制作した人物は誰でしょうか？",
+        options: ["レオナルド・ダ・ヴィンチ", "ミケランジェロ", "ドナテッロ", "ベルニーニ"],
+        exp: "ミケランジェロのダビデ像（1501-1504）はルネサンス彫刻の傑作です。"
+    },
+    "일본 헤이안 시대 문학의 대표작 '겐지모노가타리(源氏物語)'의 저자는?": {
+        q: "日本の平安時代文学の代表作『源氏物語』の著者は誰でしょうか？",
+        options: ["紫式部", "清少納言", "和泉式部", "更級日記"],
+        exp: "紫式部が11世紀初頭に書いた世界最初の長編小説です。"
+    },
+    "상대성이론을 제안한 아인슈타인이 노벨 물리학상을 받은 연구 주제는?": {
+        q: "相対性理論を提唱したアインシュタインがノーベル物理学賞を受賞した研究テーマは何でしょうか？",
+        options: ["一般相対性理論", "特殊相対性理論", "光電効果", "ブラウン運動"],
+        exp: "アインシュタインは1921年に光電効果の研究でノーベル賞を受賞しました。"
+    },
+    "중국 송나라 시대에 발명되어 세계사를 바꾼 '4대 발명'에 속하지 않는 것은?": {
+        q: "中国の宋代に発明され世界史を変えた『四大発明』に含まれないものはどれでしょうか？",
+        options: ["火薬", "羅針盤", "印刷術", "蒸気機関"],
+        exp: "中国の四大発明は火薬、羅針盤、印刷術、紙です。"
+    },
+    "프랑스 계몽사상가 볼테르의 대표 풍자소설은?": {
+        q: "フランスの啓蒙思想家ヴォルテールの代表的な風刺小説はどれでしょうか？",
+        options: ["カンディード", "百科全書", "社会契約論", "ペルシア人の手紙"],
+        exp: "『カンディード』はヴォルテールの代表的な風刺小説で楽観主義を批判します。"
+    },
+    "고대 그리스 철학자 플라톤이 세운 학교의 이름은?": {
+        q: "古代ギリシャの哲学者プラトンが設立した学校の名前は何でしょうか？",
+        options: ["アカデメイア", "リュケイオン", "ストア", "キュニコス"],
+        exp: "プラトンは紀元前387年頃にアテネにアカデメイアを設立しました。"
+    },
+    "중세 이슬람 세계에서 철학, 의학, 수학을 집대성한 학자 이븐 시나의 라틴어 이름은?": {
+        q: "中世イスラム世界で哲学、医学、数学を集大成した学者イブン・シーナーのラテン語名は何でしょうか？",
+        options: ["アヴィセンナ", "アヴェロエス", "アル＝フワーリズミー", "アル＝ファーラービー"],
+        exp: "イブン・シーナーのラテン語名はアヴィセンナ（Avicenna）です。"
+    },
+    // 주관식 문제 번역
+    "셰익스피어의 4대 비극 작품 4개를 모두 말하시오.": {
+        q: "シェイクスピアの四大悲劇作品を全て答えてください。",
+        options: [],
+        exp: "シェイクスピアの四大悲劇はハムレット、オセロ、リア王、マクベスです。",
+        answer: "ハムレット（Hamlet）、オセロ（Othello）、リア王（King Lear）、マクベス（Macbeth）",
+        hint: "ヒント：Hで始まる作品、Oで始まる作品、Kで始まる作品、Mで始まる作品"
+    },
+    "르네상스 3대 예술가의 이름을 모두 말하시오.": {
+        q: "ルネサンス三大芸術家の名前を全て答えてください。",
+        options: [],
+        exp: "ルネサンス三大巨匠はレオナルド・ダ・ヴィンチ、ミケランジェロ、ラファエロです。",
+        answer: "レオナルド・ダ・ヴィンチ（Leonardo da Vinci）、ミケランジェロ（Michelangelo）、ラファエロ（Raphael）",
+        hint: "ヒント：モナリザを描いた画家、システィーナ礼拝堂の天井画を描いた画家、アテネの学堂を描いた画家"
+    },
+    "프랑스 혁명의 3대 이념을 순서대로 말하시오.": {
+        q: "フランス革命の三大理念を順番に答えてください。",
+        options: [],
+        exp: "フランス革命の三大理念は自由、平等、友愛です。",
+        answer: "自由（Liberté）、平等（Égalité）、友愛（Fraternité）",
+        hint: "ヒント：Lで始まる、Éで始まる、Fで始まる（フランス語順）"
+    },
+    "원소 주기율표에서 첫 번째 원소(수소)의 원소기호와 원자번호를 말하시오.": {
+        q: "元素周期表で最初の元素（水素）の元素記号と原子番号を答えてください。",
+        options: [],
+        exp: "水素の元素記号はHで、原子番号は1です。",
+        answer: "H（元素記号）、1（原子番号）",
+        hint: "ヒント：Hydrogenの最初の文字、最小の自然数"
+    },
+    "한국의 3대 명절을 모두 말하시오.": {
+        q: "韓国の三大名節を全て答えてください。",
+        options: [],
+        exp: "韓国の三大名節は旧正月（ソルラル）、秋夕（チュソク）、端午（タノ）です。",
+        answer: "旧正月（ソルラル）、秋夕（チュソク）、端午（タノ）",
+        hint: "ヒント：陰暦1月1日、陰暦8月15日、陰暦5月5日"
+    },
+    "태양계 8개 행성을 태양에서 가까운 순서대로 모두 나열하시오.": {
+        q: "太陽系の8つの惑星を太陽に近い順に全て並べてください。",
+        options: [],
+        exp: "太陽系の8つの惑星は水星、金星、地球、火星、木星、土星、天王星、海王星の順です。",
+        answer: "水星（Mercury）、金星（Venus）、地球（Earth）、火星（Mars）、木星（Jupiter）、土星（Saturn）、天王星（Uranus）、海王星（Neptune）",
+        hint: "ヒント：水金地火木土天海（My Very Educated Mother Just Served Us Nachos）"
+    },
+    "세계 3대 미술관의 이름을 말하시오.": {
+        q: "世界三大美術館の名前を答えてください。",
+        options: [],
+        exp: "世界三大美術館はルーヴル美術館、大英博物館、メトロポリタン美術館です。",
+        answer: "ルーヴル美術館（Louvre Museum）、大英博物館（British Museum）、メトロポリタン美術館（Metropolitan Museum）",
+        hint: "ヒント：パリにある博物館、ロンドンにある博物館、ニューヨークにある博物館"
+    },
+    "노벨상 6개 부문의 이름을 모두 말하시오.": {
+        q: "ノーベル賞6部門の名前を全て答えてください。",
+        options: [],
+        exp: "ノーベル賞は物理学、化学、生理学・医学、文学、平和、経済学の6部門があります。",
+        answer: "物理学賞、化学賞、生理学・医学賞、文学賞、平和賞、経済学賞",
+        hint: "ヒント：科学3つ（物理、化学、医学）、人文1つ、社会2つ"
+    },
+    "세계 4대 문명 발상지를 모두 말하시오.": {
+        q: "世界四大文明の発祥地を全て答えてください。",
+        options: [],
+        exp: "世界四大文明はメソポタミア、エジプト、インダス、黄河文明です。",
+        answer: "メソポタミア文明、エジプト文明、インダス文明、黄河文明",
+        hint: "ヒント：チグリス・ユーフラテス川、ナイル川、インダス川、黄河流域"
+    },
+    "올림픽 5륜기의 5가지 색깔을 모두 말하시오.": {
+        q: "オリンピック五輪旗の5つの色を全て答えてください。",
+        options: [],
+        exp: "オリンピック五輪旗は青、黄、黒、緑、赤の5色で構成されています。",
+        answer: "青、黄、黒、緑、赤",
+        hint: "ヒント：五大陸を象徴し、白地に5つの輪で構成"
+    },
+    "한국의 5대 궁궐 이름을 모두 말하시오.": {
+        q: "韓国の五大宮殿の名前を全て答えてください。",
+        options: [],
+        exp: "朝鮮時代の漢陽（ソウル）の五大宮殿は景福宮、昌徳宮、昌慶宮、徳寿宮、慶熙宮です。",
+        answer: "景福宮（キョンボックン）、昌徳宮（チャンドックン）、昌慶宮（チャンギョングン）、徳寿宮（トクスグン）、慶熙宮（キョンヒグン）",
+        hint: "ヒント：景で始まる2つ、昌で始まる2つ、徳で始まる1つ"
+    },
+    "세계 3대 종교를 신자 수가 많은 순서대로 나열하시오.": {
+        q: "世界三大宗教を信者数が多い順に並べてください。",
+        options: [],
+        exp: "世界三大宗教はキリスト教、イスラム教、ヒンドゥー教の順です。",
+        answer: "キリスト教（Christianity）、イスラム教（Islam）、ヒンドゥー教（Hinduism）",
+        hint: "ヒント：イエス、ムハンマド、ブラフマーを信じる宗教の順に"
+    },
+    "베토벤의 3대 교향곡(영웅, 운명, 합창)의 번호를 순서대로 말하시오.": {
+        q: "ベートーヴェンの三大交響曲（英雄、運命、合唱）の番号を順に答えてください。",
+        options: [],
+        exp: "ベートーヴェンの三大交響曲は3番英雄、5番運命、9番合唱です。",
+        answer: "交響曲第3番（英雄）、交響曲第5番（運命）、交響曲第9番（合唱）",
+        hint: "ヒント：奇数番号のみ該当（3、5、9番）"
+    },
+    "빛의 3원색을 모두 말하시오.": {
+        q: "光の三原色を全て答えてください。",
+        options: [],
+        exp: "光の三原色は赤（Red）、緑（Green）、青（Blue）です。",
+        answer: "赤（Red）、緑（Green）、青（Blue）",
+        hint: "ヒント：RGB（コンピュータモニターの色表現方式）"
+    },
+    "한국 전통 음악의 3대 악기를 말하시오.": {
+        q: "韓国伝統音楽の三大楽器を答えてください。",
+        options: [],
+        exp: "韓国伝統音楽の代表的な楽器は伽耶琴、玄琴、笛です。",
+        answer: "伽耶琴（カヤグム）、玄琴（コムンゴ）、笛（ピリ）",
+        hint: "ヒント：弦楽器2つ（6弦、12弦）、管楽器1つ"
     }
 };
 
@@ -1145,6 +1436,11 @@ const quizTranslationsJP = {
 function getJPTranslationForQuiz(quiz) {
     const t = quizTranslationsJP[quiz.question];
     if (!t) return null;
+    // 주관식 문제는 options가 빈 배열이므로 체크하지 않음
+    if (quiz.type === 'essay') {
+        return t;
+    }
+    // 객관식 문제는 options가 4개여야 함
     if (!t.options || t.options.length !== 4) return null;
     return t;
 }
@@ -1198,15 +1494,14 @@ function shuffleQuizArray(arr) {
     }
 }
 
-// 모든 경기를 합쳐 전체를 섞고, 다시 동일 개수씩 원래 게임 수만큼 분할하는 함수
-function shuffleAllAndRedistribute() {
-    const gameKeys = Object.keys(quizDataByGame);
-    if (gameKeys.length === 0) return;
-
-    // 각 경기 문제 수 기록 (경기별 개수는 유지, 문제만 섞어 전체로 재분배)
+// 1~3경기만 합쳐서 섞고 재분배하는 함수 (기본 셔플)
+function shuffleGames123() {
+    const gameKeys = ['game1', 'game2', 'game3'];
+    
+    // 각 경기 문제 수 기록
     const counts = gameKeys.map(k => quizDataByGame[k].length);
 
-    // 전체 문제 풀 수집
+    // 1~3경기 문제 풀 수집
     const pool = [];
     gameKeys.forEach(k => {
         quizDataByGame[k].forEach(q => pool.push(q));
@@ -1215,7 +1510,7 @@ function shuffleAllAndRedistribute() {
     // 전체 셔플
     shuffleQuizArray(pool);
 
-    // 다시 분배: 앞에서부터 각 경기 개수만큼 차례대로 슬라이스
+    // 다시 분배
     let offset = 0;
     gameKeys.forEach((k, idx) => {
         const size = counts[idx];
@@ -1224,17 +1519,40 @@ function shuffleAllAndRedistribute() {
     });
 }
 
-// 외부에서 호출: 문제 순서 섞기 (겹치지 않게 전 경기 전체를 한 번 섞어 재분배)
+// 4경기만 문제 순서 섞기 (결승전 셔플)
+function shuffleGame4Only() {
+    if (!quizDataByGame.game4 || quizDataByGame.game4.length === 0) return;
+    
+    // 4경기 문제만 섞기 (배열 내부에서 순서만 변경)
+    shuffleQuizArray(quizDataByGame.game4);
+}
+
+// 기본 셔플: 1~3경기만 섞기
 function randomizeQuizOrder() {
     if (!originalQuizDataBackup) {
         // 최초 실행 시 원본 백업
         originalQuizDataBackup = JSON.parse(JSON.stringify(quizDataByGame));
     }
-    shuffleAllAndRedistribute();
+    shuffleGames123();
     quizShuffled = true;
     currentGame = 1;
     currentQuizIndex = 0;
-    showAlert('모든 경기의 문제 순서를 무작위로 섞어 재배치했습니다. (겹침 없이 분배)', 'success');
+    showAlert('1~3경기의 문제 순서를 무작위로 섞어 재배치했습니다. (겹침 없이 분배)', 'success');
+    // 관리 리스트 갱신
+    const management = document.getElementById('quizManagement');
+    if (management && management.style.display === 'block') {
+        updateQuizList();
+    }
+}
+
+// 결승전 셔플: 4경기만 섞기
+function randomizeFinalQuizOrder() {
+    if (!originalQuizDataBackup) {
+        // 최초 실행 시 원본 백업
+        originalQuizDataBackup = JSON.parse(JSON.stringify(quizDataByGame));
+    }
+    shuffleGame4Only();
+    showAlert('4경기(결승전)의 문제 순서를 무작위로 섞었습니다.', 'success');
     // 관리 리스트 갱신
     const management = document.getElementById('quizManagement');
     if (management && management.style.display === 'block') {
@@ -2177,15 +2495,7 @@ function setFinalRanking(roundIndex, matchIndex, teamId) {
     // 모든 순위가 결정되면 완료 처리
     if (finalRound.rankings.length === 3) {
         finalRound.completed = true;
-
-        // 점수 배점
-        finalRound.rankings.forEach((team, index) => {
-            const points = [5, 3, 1]; // 1등 5점, 2등 3점, 3등 1점
-            team.score += points[index];
-        });
-
-        updateScoreboard();
-        showAlert('최종 결승이 완료되었습니다!', 'success');
+        showAlert('최종 결승이 완료되었습니다! 점수판에서 수동으로 점수를 부여하세요.', 'success');
     }
 
     updateTournamentDisplay();
@@ -2610,23 +2920,50 @@ function loadQuestion() {
         }
     }
     
-    // 선택지 표시
-    const options = ['A', 'B', 'C', 'D'];
-    const t = getJPTranslationForQuiz(quiz);
-    options.forEach((letter, index) => {
-        const optionElement = document.getElementById(`option${letter}`);
-        if (optionElement && quiz && quiz.options[index]) {
-            const optionText = optionElement.querySelector('.option-text');
-            if (optionText) {
-                if (t) {
-                    optionText.innerHTML = `${quiz.options[index]}<br><span class="jp">${t.options[index]}</span>`;
-                } else {
-                    optionText.textContent = quiz.options[index];
-                }
-            }
-            optionElement.classList.remove('selected', 'correct', 'wrong', 'disabled');
+    // 주관식 문제인지 확인
+    const isEssay = quiz.type === 'essay';
+    const optionsSection = document.querySelector('.options-section');
+    
+    // 힌트 버튼 표시/숨김 (주관식 문제만)
+    const showHintBtn = document.getElementById('showHintBtn');
+    if (showHintBtn) {
+        if (isEssay && quiz.hint) {
+            showHintBtn.style.display = 'inline-block';
+        } else {
+            showHintBtn.style.display = 'none';
         }
-    });
+    }
+    
+    // 힌트 섹션 숨기기 (새 문제 로드 시)
+    const hintSection = document.getElementById('hintSection');
+    if (hintSection) {
+        hintSection.style.display = 'none';
+    }
+    
+    if (isEssay) {
+        // 주관식: 선택지 숨기기
+        if (optionsSection) optionsSection.style.display = 'none';
+    } else {
+        // 객관식: 선택지 표시
+        if (optionsSection) optionsSection.style.display = 'grid';
+        
+        const options = ['A', 'B', 'C', 'D'];
+        const t = getJPTranslationForQuiz(quiz);
+        options.forEach((letter, index) => {
+            const optionElement = document.getElementById(`option${letter}`);
+            if (optionElement && quiz && quiz.options[index]) {
+                const optionText = optionElement.querySelector('.option-text');
+                if (optionText) {
+                    if (t) {
+                        optionText.innerHTML = `${quiz.options[index]}<br><span class="jp">${t.options[index]}</span>`;
+                    } else {
+                        optionText.textContent = quiz.options[index];
+                    }
+                }
+                optionElement.classList.remove('selected', 'correct', 'wrong', 'disabled');
+            }
+        });
+    }
     
     // 답안 섹션 숨기기
     const answerSection = document.getElementById('answerSection');
@@ -2743,6 +3080,30 @@ function showSampleAnswer() {
     isAnswerShown = true;
 }
 
+// 힌트 표시 함수
+function showHint() {
+    const currentGameQuestions = quizDataByGame[`game${currentGame}`];
+    if (!currentGameQuestions) return;
+    
+    const quiz = currentGameQuestions[currentQuizIndex];
+    if (!quiz || !quiz.hint) return;
+    
+    const hintSection = document.getElementById('hintSection');
+    const hintText = document.getElementById('hintText');
+    
+    const t = getJPTranslationForQuiz(quiz);
+    
+    // 힌트 내용 구성 (한국어 + 일본어)
+    let hintContent = `<p style="font-size: 1.3rem; margin-bottom: 10px;">${quiz.hint}</p>`;
+    
+    if (t && t.hint) {
+        hintContent += `<p class="jp" style="font-size: 1.1rem; opacity: 0.9;">${t.hint}</p>`;
+    }
+    
+    hintText.innerHTML = hintContent;
+    hintSection.style.display = 'block';
+}
+
 function showAnswer() {
     if (isAnswerShown) return;
     
@@ -2755,36 +3116,59 @@ function showAnswer() {
     // 일반 게임 모드 처리
     const currentGameQuestions = quizDataByGame[`game${currentGame}`];
     const quiz = currentGameQuestions[currentQuizIndex];
-    const correctAnswer = quiz.correct;
+    const isEssay = quiz.type === 'essay';
     
-    // 정답 표시
-    const options = ['A', 'B', 'C', 'D'];
-    options.forEach(letter => {
-        const optionElement = document.getElementById(`option${letter}`);
-        if (letter === correctAnswer) {
-            optionElement.classList.add('correct');
-        } else if (letter === selectedAnswer && letter !== correctAnswer) {
-            optionElement.classList.add('wrong');
+    if (isEssay) {
+        // 주관식 문제: 정답을 바로 표시
+        const answerSection = document.getElementById('answerSection');
+        const t = getJPTranslationForQuiz(quiz);
+        
+        if (t && t.answer) {
+            document.getElementById('correctAnswerText').innerHTML = `${quiz.answer}<br><span class="jp">${t.answer}</span>`;
+            document.getElementById('explanationText').innerHTML = `${quiz.explanation}<br><span class="jp">${t.exp}</span>`;
+        } else {
+            document.getElementById('correctAnswerText').textContent = quiz.answer;
+            document.getElementById('explanationText').textContent = quiz.explanation;
         }
-    });
-    
-    // 정답 설명 표시
-    const answerSection = document.getElementById('answerSection');
-    const t = getJPTranslationForQuiz(quiz);
-    const kor = quiz.options[correctAnswer.charCodeAt(0) - 65];
-    if (t) {
-        document.getElementById('correctAnswerText').innerHTML = `${correctAnswer} - ${kor}<br><span class="jp">${t.options[correctAnswer.charCodeAt(0) - 65]}</span>`;
-        document.getElementById('explanationText').innerHTML = `${quiz.explanation}<br><span class="jp">${t.exp}</span>`;
+        
+        answerSection.style.display = 'block';
+        document.getElementById('showAnswerBtn').style.display = 'none';
+        document.getElementById('nextQuestionBtn').style.display = 'inline-block';
+        
+        isAnswerShown = true;
     } else {
-        document.getElementById('correctAnswerText').textContent = `${correctAnswer} - ${kor}`;
-        document.getElementById('explanationText').textContent = quiz.explanation;
+        // 객관식 문제: 기존 로직
+        const correctAnswer = quiz.correct;
+        
+        // 정답 표시
+        const options = ['A', 'B', 'C', 'D'];
+        options.forEach(letter => {
+            const optionElement = document.getElementById(`option${letter}`);
+            if (letter === correctAnswer) {
+                optionElement.classList.add('correct');
+            } else if (letter === selectedAnswer && letter !== correctAnswer) {
+                optionElement.classList.add('wrong');
+            }
+        });
+        
+        // 정답 설명 표시
+        const answerSection = document.getElementById('answerSection');
+        const t = getJPTranslationForQuiz(quiz);
+        const kor = quiz.options[correctAnswer.charCodeAt(0) - 65];
+        if (t) {
+            document.getElementById('correctAnswerText').innerHTML = `${correctAnswer} - ${kor}<br><span class="jp">${t.options[correctAnswer.charCodeAt(0) - 65]}</span>`;
+            document.getElementById('explanationText').innerHTML = `${quiz.explanation}<br><span class="jp">${t.exp}</span>`;
+        } else {
+            document.getElementById('correctAnswerText').textContent = `${correctAnswer} - ${kor}`;
+            document.getElementById('explanationText').textContent = quiz.explanation;
+        }
+        
+        answerSection.style.display = 'block';
+        document.getElementById('showAnswerBtn').style.display = 'none';
+        document.getElementById('nextQuestionBtn').style.display = 'inline-block';
+        
+        isAnswerShown = true;
     }
-    
-    answerSection.style.display = 'block';
-    document.getElementById('showAnswerBtn').style.display = 'none';
-    document.getElementById('nextQuestionBtn').style.display = 'inline-block';
-    
-    isAnswerShown = true;
 }
 
 function nextQuestion() {

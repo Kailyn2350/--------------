@@ -29,12 +29,9 @@
             <button class="nav-btn" onclick="showSection('scoreboard')">점수판</button>
             <button class="nav-btn" onclick="showSection('results')">결과 발표</button>
             <button class="nav-btn" onclick="showSection('timer')">타이머</button>
-            <button class="nav-btn" onclick="showSection('games')">게임 가이드</button>
-            <button class="nav-btn" onclick="showSection('schedule')">시간표</button>
             <button class="nav-btn" onclick="showSection('tournament')">토너먼트</button>
             <button class="nav-btn" onclick="showSection('words')">제시어</button>
             <button class="nav-btn" onclick="showSection('quiz')">퀴즈</button>
-            <button class="nav-btn" onclick="showSection('progress')">진행 관리</button>
         </div>
 
         <!-- 팀 설정 섹션 -->
@@ -153,157 +150,6 @@
             </div>
         </div>
 
-        <!-- 게임 가이드 섹션 -->
-        <div id="games" class="section">
-            <h2>🎯 게임 가이드</h2>
-
-            <div class="game-info">
-                <div class="game-title">1. 몸으로 말해요 (10:50~11:08)</div>
-                <div class="game-description">
-                    팀에서 한명이 나와서 제시어를 몸으로 표현하여 3명의 팀원이 맞추는 게임<br>
-                    • <strong>10:50~10:53</strong>: 게임 설명 (3분)<br>
-                    • <strong>10:53~11:08</strong>: 게임 진행 (15분, 1팀당 2분 제한)<br>
-                    • <strong>11:08~11:10</strong>: 휴식 및 다음 게임 준비 (2분)
-                </div>
-            </div>
-
-            <div class="game-info">
-                <div class="game-title">2. 발목 풍선 터뜨리기 (11:10~11:27)</div>
-                <div class="game-description">
-                    고무줄을 이용해서 발목에 풍선을 달아서 서로 팀 대항전으로 상대팀의 풍선을 터뜨리는 게임<br>
-                    • <strong>11:10~11:15</strong>: 게임 설명 (5분)<br>
-                    • <strong>11:15~11:27</strong>: 게임 진행 (12분, 2팀씩 대결 토너먼트, 1경기당 3분)<br>
-                    • <strong>11:27~11:30</strong>: 휴식 및 다음 게임 준비 (3분)<br>
-                    • 승리조건: 모든 풍선을 터뜨리면 승리
-                </div>
-            </div>
-
-            <div class="game-info">
-                <div class="game-title">3. 단합 퀴즈 (11:30~11:50)</div>
-                <div class="game-description">
-                    어려운 퀴즈를 준비하고 1번부터 4번까지 보기를 준비한 다음 팀원끼리 상담해서 최종 답안을 정하는 게임<br>
-                    • <strong>11:30~11:32</strong>: 게임 설명 (2분)<br>
-                    • <strong>11:32~11:50</strong>: 게임 진행 (18분, 1팀당 3분의 시간동안 상의 가능)<br>
-                    • 보다 많이 맞힌 팀이 승리<br>
-                    • <button class="nav-btn" onclick="showQuizMode()">퀴즈쇼 시작</button>
-                </div>
-            </div>
-
-            <div class="game-info">
-                <div class="game-title">4. 카드 뒤집기 (13:00~13:30)</div>
-                <div class="game-description">
-                    쌍이 존재하는 카드를 뒤집어두고 한 팀에 한명씩 나와서 카드 2개를 뒤집어서 쌍이 맞는 경우 획득<br>
-                    • <strong>13:00~13:10</strong>: 카드 세팅 (10분)<br>
-                    • <strong>13:10~13:15</strong>: 게임 설명 (5분)<br>
-                    • <strong>13:15~13:30</strong>: 게임 진행 (15분, 2팀씩 대결, 3분 제한, 카드 고르는 시간 10초)<br>
-                    • 카드 예시: "가는말이 고아야 - 오는말이 곱다", "ㅂㅂㅂ - 비빔밥", "티끌 모아 - 태산"
-                </div>
-            </div>
-
-            <div class="game-info">
-                <div class="game-title">5. 등을 맞대고 그림 그리기 (13:30~13:45)</div>
-                <div class="game-description">
-                    각 팀별로 한 줄로 의자에 앉아서 첫번째 사람한테 간단한 그림을 보여주고, 앞사람 등에 그림을 그려서 전달<br>
-                    • <strong>13:30~13:33</strong>: 게임 설명 (3분)<br>
-                    • <strong>13:33~13:45</strong>: 게임 진행 (12분, 1명당 20초, 4명 기준 1분 20초 + 의자 배치 40초)<br>
-                    • <strong>13:45~13:50</strong>: 마지막 게임 준비 (5분)<br>
-                    • 그림 예시: 집, 강아지, 꽃 등 간단한 그림
-                </div>
-            </div>
-
-            <div class="game-info">
-                <div class="game-title">6. 오타마 릴레이 (13:50~14:10)</div>
-                <div class="game-description">
-                    모든 팀이 동시에 숟가락에 탁구공을 올리고 반환지점을 돌아서 다시 돌아와서 다음 사람에게 넘기는 게임<br>
-                    • <strong>13:50~13:55</strong>: 게임 설명 (5분)<br>
-                    • <strong>13:55~14:10</strong>: 게임 진행 (15분, 2팀씩 대결 후 3팀 결승, 시간제한 2분)<br>
-                    • 주의사항: 탁구공을 떨어뜨리면 다시 시작<br>
-                    • 모든 팀원이 다했을 때 승리
-                </div>
-            </div>
-        </div>
-
-        <!-- 시간표 섹션 -->
-        <div id="schedule" class="section">
-            <h2>📅 상세 시간표</h2>
-
-            <div class="schedule-section">
-                <div class="schedule-title">🌅 오전 세션 (10:50 ~ 11:50)</div>
-                <div class="schedule-item">
-                    <span class="time-slot">10:50~10:55</span>
-                    <span>몸으로 말해요 - 게임 설명</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="time-slot">10:55~11:05</span>
-                    <span>몸으로 말해요 - 게임 진행</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="time-slot">11:05~11:10</span>
-                    <span>휴식 및 다음 게임 준비</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="time-slot">11:10~11:15</span>
-                    <span>발목 풍선 터뜨리기 - 게임 설명</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="time-slot">11:15~11:25</span>
-                    <span>발목 풍선 터뜨리기 - 게임 진행</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="time-slot">11:25~11:30</span>
-                    <span>휴식 및 다음 게임 준비</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="time-slot">11:30~11:32</span>
-                    <span>단합 퀴즈 - 게임 설명</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="time-slot">11:32~11:50</span>
-                    <span>단합 퀴즈 - 게임 진행</span>
-                </div>
-            </div>
-
-            <div class="schedule-section" style="margin-top: 20px;">
-                <div class="schedule-title">🌞 오후 세션 (13:10 ~ 14:10)</div>
-                <div class="schedule-item">
-                    <span class="time-slot">13:00~13:10</span>
-                    <span>카드 세팅</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="time-slot">13:10~13:15</span>
-                    <span>카드 뒤집기 - 게임 설명</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="time-slot">13:15~13:30</span>
-                    <span>카드 뒤집기 - 게임 진행</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="time-slot">13:30~13:33</span>
-                    <span>등을 맞대고 그림 그리기 - 게임 설명</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="time-slot">13:33~13:45</span>
-                    <span>등을 맞대고 그림 그리기 - 게임 진행</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="time-slot">13:45~13:50</span>
-                    <span>마지막 게임 준비</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="time-slot">13:50~13:55</span>
-                    <span>오타마 릴레이 - 게임 설명</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="time-slot">13:55~14:10</span>
-                    <span>오타마 릴레이 - 게임 진행</span>
-                </div>
-            </div>
-
-            <div class="alert info" style="margin-top: 20px;">
-                💡 각 게임은 20분씩 배정되어 있고, 15분 진행 + 5분 준비/휴식 시간으로 구성됩니다.
-            </div>
-        </div>
-
         <!-- 토너먼트 섹션 -->
         <div id="tournament" class="section">
             <h2>🏟️ 토너먼트</h2>
@@ -314,7 +160,7 @@
                     <strong>6팀 기준:</strong><br>
                     • 1라운드: 2팀씩 3경기 → 승자 3팀 진출<br>
                     • 결승전: 3팀이 동시에 경기하여 1,2,3등 결정<br><br>
-                    <strong>점수:</strong> 1등 5점, 2등 3점, 3등 1점이 자동으로 추가됩니다.
+                    <strong>점수:</strong> 점수판에서 수동으로 점수를 부여하세요.
                 </div>
             </div>
 
@@ -441,7 +287,8 @@
             <div class="quiz-controls">
                 <button class="nav-btn" onclick="startQuizShow()">퀴즈쇼 시작</button>
                 <button class="nav-btn" onclick="showQuizManagement()">퀴즈 관리</button>
-                <button class="nav-btn" onclick="randomizeQuizOrder()">문제 순서 섞기</button>
+                <button class="nav-btn" onclick="randomizeQuizOrder()" style="background: linear-gradient(45deg, #43e97b, #38f9d7);">기본 셔플 (1~3경기)</button>
+                <button class="nav-btn" onclick="randomizeFinalQuizOrder()" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24);">결승전 셔플 (4경기)</button>
                 <button class="nav-btn" onclick="showSampleQuiz()">예시 문제 보기</button>
             </div>
 
@@ -496,6 +343,13 @@
                         </div>
                     </div>
 
+                    <div class="hint-section" id="hintSection" style="display: none;">
+                        <div class="hint-display">
+                            <h3>💡 힌트</h3>
+                            <div id="hintText"></div>
+                        </div>
+                    </div>
+
                     <div class="answer-section" id="answerSection" style="display: none;">
                         <div class="correct-answer">
                             <h3>정답: <span id="correctAnswerText"></span></h3>
@@ -504,6 +358,7 @@
                     </div>
 
                     <div class="quiz-controls">
+                        <button class="quiz-btn" id="showHintBtn" onclick="showHint()" style="display: none; background: linear-gradient(45deg, #FFA500, #FF8C00);">💡 힌트 보기</button>
                         <button class="quiz-btn" id="showAnswerBtn" onclick="showAnswer()">정답 확인</button>
                         <button class="quiz-btn" id="nextQuestionBtn" onclick="nextQuestion()" style="display: none;">다음
                             문제</button>
@@ -518,59 +373,6 @@
                         <button class="game-control-btn" onclick="goToGame(4)">4경기</button>
                         <button class="game-control-btn" onclick="nextGame()">다음 경기 ▶</button>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 진행 관리 섹션 -->
-        <div id="progress" class="section">
-            <h2>🎯 진행 관리</h2>
-
-            <div class="mode-controls">
-                <h3>진행 모드 설정</h3>
-                <div class="mode-status" id="modeStatus">
-                    현재: 수동 모드 (게임 전환을 직접 제어)
-                </div>
-                <button class="realtime-toggle" onclick="toggleRealTimeMode()">실시간모드 ON</button>
-                <button class="auto-mode-toggle" onclick="toggleAutoMode()">자동모드 ON</button>
-                <p style="margin-top: 10px; color: #666; font-size: 0.9rem;">
-                    • <strong>실시간모드:</strong> 현재 시간에 따라 게임이 자동으로 전환됩니다.<br>
-                    • <strong>자동모드:</strong> 타이머 종료 시 다음 게임으로 자동 전환됩니다.
-                </p>
-            </div>
-
-            <div class="timer-section">
-                <h3>게임 선택 및 전환</h3>
-                <button class="timer-btn" onclick="previousGame()">◀ 이전 게임</button>
-                <button class="timer-btn" onclick="nextGame()">다음 게임 ▶</button>
-
-                <div class="game-selector" id="gameSelector">
-                    <!-- 게임 선택 버튼들이 여기에 동적으로 생성됩니다 -->
-                </div>
-            </div>
-
-            <div class="game-info" style="margin-top: 20px;">
-                <div class="game-title">현재 게임별 점수 배점</div>
-                <div class="game-description">
-                    <strong>1등:</strong> 3점 | <strong>2등:</strong> 2점 | <strong>3등:</strong> 1점<br>
-                    <strong>참가점:</strong> 모든 팀 +1점 (게임 참여 보상)
-                </div>
-                <div style="text-align: center; margin-top: 15px;">
-                    <button class="nav-btn" onclick="distributeGamePoints()">현재 게임 점수 배점</button>
-                    <button class="nav-btn" onclick="showGameRanking()">게임별 순위 확인</button>
-                </div>
-            </div>
-
-            <div class="game-info" style="margin-top: 20px;">
-                <div class="game-title">빠른 알림</div>
-                <div
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 10px;">
-                    <button class="preset-btn" onclick="quickAlert('게임을 시작하겠습니다!')">게임 시작</button>
-                    <button class="preset-btn" onclick="quickAlert('1분 남았습니다!')">1분 남음</button>
-                    <button class="preset-btn" onclick="quickAlert('30초 남았습니다!')">30초 남음</button>
-                    <button class="preset-btn" onclick="quickAlert('게임이 종료되었습니다!')">게임 종료</button>
-                    <button class="preset-btn" onclick="quickAlert('다음 게임을 준비해주세요!')">다음 게임 준비</button>
-                    <button class="preset-btn" onclick="quickAlert('잠시 휴식시간입니다!')">휴식 시간</button>
                 </div>
             </div>
         </div>
